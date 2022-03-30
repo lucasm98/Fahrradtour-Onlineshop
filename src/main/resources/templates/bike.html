@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+
+<div class="ui segment">
+    <div class="ui internally celled grid">
+        <div class="row">
+            <div class="nine wide column">
+                <div class="content">
+                    <img class="ui fluid image" th:src="@{/resources/img/standard.jpg}"
+                         src="../static/resources/img/standard.jpg" >
+                </div>
+            </div>
+            <div class="seven wide column">
+                <div class="content">
+                    <div class="ui header" th:text="#{bike.name}">material Name</div>
+                </div>
+                <div class="content">
+                    <div class="ui description" th:text="#{bike.description}">material Name</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+    <title th:text="#{template.impressum}"></title>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+<div class="ui segment">
+    <h2 th:text="#{template.impressum}"></h2>
+    <br>
+    <span>
+        <h3 th:text="#{impressum.address}"></h3>
+        <span th:text="#{template.street}"></span><br>
+        <span th:text="#{template.city}"></span><br>
+    </span>
+    <br>
+    <span>
+        <h3 th:text="#{impressum.contact}"></h3>
+        <span th:text="#{template.telephone}"></span>
+        <br>
+        <span th:text="#{template.fax}"></span>
+        <br>
+        <span th:text="#{template.email}"></span>
+        <br>
+    </span>
+    <br>
+    <span>
+        <span th:text="#{template.uid}"></span><br>
+        <span th:text="#{template.number}"></span><br>
+    </span>
+    <br>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

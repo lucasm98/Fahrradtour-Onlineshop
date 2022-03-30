@@ -1,0 +1,324 @@
+= Bug list
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0001
+|wird gefixed durch |Marcel
+|Status |fixed
+|Pfad |booking/...
+|Parameter |Boss ist eingeloggt
+|Beschreibung | Boss versucht Reise zu buchen mit Fehlermeldung
+|Rückgabe |error 403
+|Behebung |Button zum buchen wird nur für User mit Rolle "CUSTOMER" angezeigt, Pfad nicht mehr erreichbar für User ohne "Customer" Rolle
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0002
+|wird gefixed durch |julian
+|Status |fixed
+|Pfad |management/tourForm
+|Parameter |Capacity größer als 2^31
+|Beschreibung | Zu großer int
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0003
+|wird gefixed durch |julian
+|Status |fixed
+|Pfad |management/tourForm
+|Parameter |title extrem lang
+|Beschreibung | String größer als 255 Zeichen
+|Rückgabe |SQL error
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0004
+|wird gefixed durch |julian
+|Status |fixed
+|Pfad |management/../update
+|Parameter |capacity = -1
+|Beschreibung | capacity kann 0 oder negativ sein
+|Rückgabe |Reise wird ohne überprüfung geändert
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0005
+|wird gefixed durch |Marcel
+|Status |semi fixed
+|Pfad |checkBike/...
+|Parameter |uncheck "add to cart"
+|Beschreibung | beim kaufen eines bikes kann man "add to cart" unchecken
+|Rückgabe |error 400
+|Behebung |wenn checkBikeForm null ist, dann wird der User zurück auf die Übersicht seiner Buchungen geschickt
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0006
+|wird gefixed durch | Lucas
+|Status |fixed
+|Pfad |myBooking
+|Parameter |Kunde ist eingeloggt
+|Beschreibung | Kunde will Fahrrad kaufen, obwohl er dies zuvor bereits getan hat
+|Rückgabe |Fahrradkauf ist erfolgreich
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0007
+|wird gefixed durch |lucas
+|Status |fixed
+|Pfad |management/material Manager
+|Parameter |auf "Search", "Parts", "Supply", "create Material" oder "Material Stock" klicken
+|Beschreibung | Buttons funktionieren nicht
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0008
+|wird gefixed durch |julian
+|Status |fixed
+|Pfad |management/../concreteTourForm
+|Parameter |Start- und Enddatum
+|Beschreibung | Enddatum kann vor Startdatum liegen
+|Rückgabe |Tour wird ohne Überprüfung erstellt
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0009
+|wird gefixed durch |Ibrahim
+|Status |invalid - button states current state. Column header states Toggle State. Clicking simply toggles the state
+|Pfad |management/resupplyManager
+|Parameter |auf "aktiv" klicken
+|Beschreibung | Versorgungsstation mit gefülltem Inventar kann deaktiviert werden
+|Rückgabe |Station wird deaktiviert
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0010
+|wird gefixed durch |Lucas
+|Status |fixed
+|Pfad |management/resupplyManager/..
+|Parameter |auf "open" bei einem Item klicken
+|Beschreibung | ein Item öffnen
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0011
+|wird gefixed durch |Lucas
+|Status |fixed
+|Pfad |management/materialManager/..
+|Parameter |auf eine Filteroption klicken
+|Beschreibung | Katalog filtern
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0012
+|wird gefixed durch |Lucas
+|Status |fixed
+|Pfad |management/materialManager/..
+|Parameter |auf eine Filteroption klicken
+|Beschreibung | einen Eintrag öffnen
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0013
+|wird gefixed durch |Lucas
+|Status |fixed
+|Pfad |management/materialManager/..
+|Parameter |auf "edit" bei einem Item klicken
+|Beschreibung | einen Eintrag bearbeiten
+|Rückgabe |error 500
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0014
+|wird gefixed durch |...
+|Status |unfixed
+|Beschreibung | bikeManager ist extrem unübersichtlich und erfüllt keinen ersichtlichen Zweck
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0015
+|wird gefixed durch |Lucas
+|Status |fixed
+|Beschreibung | Wenn ein Nutzer sich registriert wird er automatisch ein Tourguide
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0016
+|wird gefixed durch |...
+|Status |unfixed
+|Beschreibung | userManager, resupplyManager und purchaseManager werden zu groß bei vielen Einträgen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0017
+|wird gefixed durch |...
+|Status |unfixed
+|Beschreibung | Nur der Boss kann alles verwalten? (keine Angestellten)
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0018
+|wird gefixed durch |lucas
+|Status |fixed
+|Beschreibung | Email und Number in der Registrierung checken nicht auf Art der Eingabe (irgendein String möglich)
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0019
+|wird gefixed durch |julian
+|Status |kein bug
+|Beschreibung | der Kunde kann mehrmals (teilweise dutzendfach) eine Tour buchen, obwohl nur einmaliges Buchen sinnvoll wäre
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0020
+|wird gefixed durch |marwin
+|Status |fixed
+|Beschreibung | das User-Interface sollte auf Deutsch sein, da die Zielgruppe des Reisebüros deutsche Touristen sind
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0021
+|wird gefixed durch |julian
+|Status |fixed
+|Beschreibung | die Datumsangaben von Touren sollten im deutsche Datums-Format angegeben werden
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0022
+|wird gefixed durch |lucas
+|Status |fixed
+|Beschreibung | als Kunde ist nicht ersichtlich, wie viel die Touren kosten
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0023
+|wird gefixed durch |Marcel
+|Status |unfixed
+|Beschreibung | Kunden haben keine Möglichkeit, ihre Treuepunkte einzusehen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0024
+|wird gefixed durch |...
+|Status |unfixed
+|Beschreibung | nach dem Kauf eines Fahrrads ist keine Bestätigung in Form einer Rechnung o.Ä. vorhanden
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0025
+|wird gefixed durch |lucas
+|Status |fixed
+|Beschreibung | eine Registrierung ist ohne Angabe einer Hausnummer möglich
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0026
+|wird gefixed durch |julian
+|Status |kein bug, ist vorhanden
+|Beschreibung | Boss kann keine neuen TourTemplates erstellen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0027
+|wird gefixed durch |...
+|Status |unfixed
+|Beschreibung | ein Tour-Guide kann die Tour, für die er Guide ist, selbst als Kunde buchen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0028
+|wird gefixed durch |julian
+|Status |kein bug
+|Beschreibung | wenn man auf der Startseite auf ein Fahrrad oder die Tourübersicht klickt hat man nur über das Logo die Möglichkeit zurück zur Startseite zu kommen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0029
+|wird gefixed durch |julian
+|Status |fixed
+|Beschreibung | bei der Übersicht von Versorgungsstationen wird die Adressangabe in eckigen Klammern und Kommata angegeben
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |B0030
+|wird gefixed durch |julian
+|Status |fixed
+|Beschreibung | Touren, die nach dem aktuellen Datum sind, werden im Katalog nicht mehr angezeigt. un auf inactive gesetzt
+|===
+
+= Improvement list
+
+[options="headers", col="1h, 4"]
+|===
+|ID |I0001
+|wird bearbeitet durch |julian
+|Status |kein bug
+|Beschreibung | Preis einer Tour könnte einfacher über die Preiskategorie bestimmt werden
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |I0002
+|wird bearbeitet durch |julian
+|Status |kein bug, bleibt so
+|Beschreibung | concreteTourManager könnte noch mehr informationen anzeigen (z.B. id und preis)
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |I0003
+|wird bearbeitet durch |julian
+|Status |unfinished
+|Beschreibung | concreteTourManager könnte noch sortierbar/filterbar sein
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |I0004
+|wird bearbeitet durch |...
+|Status |unfinished
+|Beschreibung | nach erfolgreicher Registrierung sollte man direkt eingeloggt sein
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |I0005
+|wird bearbeitet durch |Lucas
+|Status |unfinished
+|Beschreibung | die Startseite vom Boss sollte nicht leer sein
+|===

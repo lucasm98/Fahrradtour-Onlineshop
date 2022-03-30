@@ -1,0 +1,60 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2019/20
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von:** _Julian Möller_
+
+**Gruppe:** _40_
+
+== Was habe ich gelernt?
+Ein sehr interessanter Aspekt des Praktikums ist die Zusammenarbeit in einem Team, das man
+im Vorfeld nicht kennt. Man wird also in eine komplett neue Situation geworfen und muss anfangen sich
+zu arrangieren. Man muss die verschiedenen Erfahrungen und Kenntnisstande der Teammitglieder herausfinden und
+diese bestmöglich in die Ausführung des Projekts integrieren. Zeitmanagement ist auch ein Faktor,
+der im Verlauf des Praktikums von bedeutender Wichtigkeit ist. Des Weiteren spielen auch
+Vertrauen auf die Fähigkeiten der Anderen eine wichtige Rolle.
+Man lernt also nicht nur Software spezifisches Wissen, sondern sammelt auch zwischenmenschliche
+Erfahrungen.
+Ein negativer Faktor ist der Stress, der entsteht, wenn man durch nicht erkannte
+Schwierigkeiten etc. vor einer Deadline steht und noch mehr zu erledigen hat als eigentlich
+eingeplant.Dies ist aber wahrscheinlich eine Erfahrung, die man als zukünftiger
+Softwareentwickler machen sollte.
+// Ausführung der positiven und negativen Erfahrungen, die im Softwarepraktikum gesammelt wurden
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+Zusammenarbeit hat sehr viel mit Vertrauen zu tun. Der Erfolg der Gruppe hängt von
+der Disziplin und der richtigen Errbeitung eines jeden einzelnen Teammitgliedes ab.
+Eine Einzelperson kann den Aufwand nicht für mehrere Personen erledigen, oder zumindest
+muss an anderer Stelle Abstriche gemacht werden. Teilweise kann es dazu kommen, dass
+Teammitlgieder andere Aufgaben als Vorgesehen annehmen müssen, weil diese für andere
+Aufgaben bessere Vorerfahrungen besitzen. Da der Erfolg des Projektes von ständiger
+Arbeit und Verbesserung des Codes lebt, kann man nicht darauf warten bis jeder auf dem
+selben Wissensstand ist und deshalb muss man mit den Erfahrungen der anderen bestmöglich arbeiten.
+// Kurze Beschreibung der Zusammenarbeit im Team. Was lief gut? Was war verbesserungswürdig? Was würden Sie das nächste Mal anders machen?
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+Frameworks sind eine gute Gelegenheit den Arbeitsaufwand eines Projektes zu minimieren. Man muss das Rad nicht neu
+erfinden, wenn es schon jemand vor einem erledigt hat. Wichtig ist allerdings dass man sich im Vorfeld mit
+dem Framework vertraut macht um dieses in der Implementierungsphase richtig nutzen zu können.
+// Einschätzung der Arbeit mit den bereitgestellten und zusätzlich genutzten Frameworks. Was War gut? Was war verbesserungswürdig?
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+Bei der Zwischenpräsentation sollte stets ein Tutor anwesend sein, der das Praktikum nicht zum
+ersten mal leitet, damit die Gruppe einen Einblick bekommt, was für den Vortrag von Wichtigkeit ist
+und was Verbesserung benötigt. Diese Sicht kann der Tutor, der es zum ersten Mal macht nicht immer
+geben, da er selbst noch nicht die Erfahrung gemacht hat, worauf tatsächlich Wert gelegt wird.
+// Möglichst mit Beschreibung, warum die Umsetzung des von Ihnen angebrachten Vorschlages nötig ist.
+
+== Feedback für den Tutor
+Alles in allem hat unser Tutor eine gute Arbeit gemacht. Teilweise hätte die Antwort auf eine
+E-Mail von uns schneller erfolgen können, da der Stress, den man sich als Gruppe macht doch
+deutlich steigt, wenn man auf eine Antwort wartet. Des Weiteren wäre eine Besprechung des
+aktuellen Standes eine gute Methode, um dem Team eine gewisse Sicherheit zu geben, ob man deutlich
+mehr Zeit aufwenden sollte, ob das Programm auf einem guten Stand ist oder noch gravierende Überarbeitung benötigt.
+// Fühlten Sie sich durch den vom Lehrstuhl bereitgestellten Tutor gut betreut? Was war positiv? Was war verbesserungswürdig?
+
+== Feedback zu den gemischten Gruppen
+Dadurch dass die Gruppen random zusammengestellt sind, gibt das dem ganzen Praktikum eine gewisse Chancengleichheit, da
+dadurch keine Gruppen entstehen können, die nur mit Leuten gefüllt sind, die sich untereinander kennen. Dadurch durchläuft jede
+Gruppe ähnliche Erfahrungen mit kennenlernen und arrangieren etc. Meiner Meinung ist das ganze also sehr sinnvoll.

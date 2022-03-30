@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{bikeManager.title}">Bike Manager</title>
+
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class=" ui segment">
+        <form method="post" role="form" class="ui form" id="form" th:action="@{/management/addBikes}">
+            <div class="field">
+
+                <h3 th:text="#{management.create.bike}">Fahrräder kaufen</h3>
+                <div class="two fields">
+                    <div class="field">
+                        <label th:text="#{management.create.quantity}">Anzahl wählen</label>
+                        <input type="number" name="quantity" id="quantity"
+                                min="1" max="500" step="1" placeholder="Anzahl auswählen" required>
+                    </div>
+                    <div class="field">
+                        <label th:text="#{management.create.type}">Typ wählen</label>
+                        <select id="bikeType" style="margin-top: 14px;" name="bikeType" required="required">
+                            <option disabled selected hidden>Fahrradtyp wählen</option>
+                            <option th:value="EBIKE">E-Bike</option>
+                            <option th:value="STANDARD">Standard</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="float: right; margin-bottom: 15px;" th:text="#{management.order.bike}"
+                        class="ui button">Order Bikes
+                </button>
+            </div>
+        </form>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th th:text="#{bikeManager.id}">ID</th>
+                <th th:text="#{bikeManager.name}">ID</th>
+                <th th:text="#{bikeManager.type}">Type</th>
+                <th th:text="#{bikeManager.status}">Status</th>
+                <th th:text="#{bikeManager.price}">Price</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+            <tr th:each=" bike : ${bikes}">
+                <td th:text="${bike.getId()}">id</td>
+                <td th:text="${bike.getName()}">id</td>
+                <td th:text="${bike.getBikeType()}">type</td>
+                <td th:text="${bike.getBikeStatus()}">status</td>
+                <td th:text="${bike.getPrice()}">price</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

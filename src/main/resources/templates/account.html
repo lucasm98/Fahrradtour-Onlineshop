@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+<div class="ui segment" th:object="${user}">
+    <form role="form" class="ui form">
+        <b>
+            <div style="padding: 5px; font-size: 16px;" th:text="${user.getUserAccount().getUsername()}"></div>
+        </b>
+        <div style="padding: 5px;" th:text="#{account.credtis} + ': ' + ${userCredits}"></div>
+    </form>
+</div>
+<div class="ui segment">
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/updateUserInformation}" th:object="${userUpdateForm}">
+        <div style="margin-bottom: 5px;"><h2 th:text="#{account.updateInformation}"></h2></div>
+        <div class="two fields">
+            <div class="field">
+                <label for="lastName" th:text="#{account.lastName}"></label>
+                <input id="lastName" name="lastName" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getUserAccount().getLastname()}">
+                <label for="firstName" th:text="#{account.firstName}"></label>
+                <input id="firstName" name="firstName" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getUserAccount().getFirstname()}">
+                <label for="street" th:text="#{account.street}"></label>
+                <input id="street" name="street" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getAddress().getStreet()}">
+                <label for="number" th:text="#{account.number}"></label>
+                <input id="number" name="number" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getAddress().getNumber()}">
+            </div>
+            <div class="field">
+                <label for="cityCode" th:text="#{account.cityCode}"></label>
+                <input id="cityCode" name="cityCode" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getAddress().getCityCode()}">
+
+                <label for="city" th:text="#{account.city}"></label>
+                <input id="city" name="city" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getAddress().getCity()}">
+
+                <label for="email" th:text="#{account.email}"></label>
+                <input id="email" name="email" type="text" required="required"
+                       style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"
+                       th:value="${user.getUserAccount().getEmail()}">
+            </div>
+        </div>
+        <div class="field" style="text-align: center">
+            <button type="submit" class="ui button" th:value="#{account.save}" th:text="#{account.save}"
+                    style="float: right;"
+            >
+            </button>
+            <br><br>
+        </div>
+    </form>
+</div>
+<div class="ui segment">
+    <form method="post" role="form" class="ui form" id="form2" th:action="@{/updatePassword}" th:object="${passwordUpdateForm}">
+
+        <div class="field">
+            <b><label th:text="#{account.password.title}"></label></b><br>
+        </div>
+        <div th:switch="${passwordUpdateError}">
+            <div th:case="${null}" th:text="''"></div>
+            <div th:case="'1'" th:text="#{account.passwordSuccess}" th:style="'color: green;'"></div>
+            <div th:case="'2'" th:text="#{account.passwordError}" th:style="'color: red;'"></div>
+        </div>
+        <div class="field">
+            <label for="newPassword" th:text="#{account.newPassword}"></label>
+            <input id="newPassword" name="newPassword" type="text" required="required"
+                   style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;">
+            <label for="newPasswordConfirm" th:text="#{account.confirmNewPassword}"></label>
+            <input id="newPasswordConfirm" name="newPasswordConfirm" type="text" required="required"
+                   style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;">
+        </div>
+
+        <div class="field">
+            <button type="submit" class="ui button" th:value="#{account.save}" th:text="#{account.save}"
+                    style="float: right;">Submit
+            </button>
+            <br><br>
+        </div>
+    </form>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

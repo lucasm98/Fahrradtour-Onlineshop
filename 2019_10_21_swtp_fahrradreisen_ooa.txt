@@ -1,0 +1,31 @@
+Entities
+
+	+ Veranstalter
+
+	+ Veranstaltungskatalog
+
+	+ Kunde
+	+ + Treuepunkte
+
+	+ Versicherung
+
+	+ Buchung
+
+	+ Tour
+	+ + Tross
+	+ + + Ersatzteile
+	+ + + Räder
+	+ + + med. Versorgung
+	+ + + Notebooks
+	+ + Reiseleiter
+	+ + Preisklasse
+	+ + + Unterkunft
+	+ + + Anreise
+
+	+ Versorgungsstationen
+
+	+ Stornierung
+
+	+ Firmensitz
+
+	+ Proviant

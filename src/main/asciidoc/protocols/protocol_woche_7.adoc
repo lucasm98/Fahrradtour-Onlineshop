@@ -1,0 +1,31 @@
+= Protokoll Gruppe 40
+
+Treffen am 27.11.2019
+
+Ort:      APB E067
+Beginn:   16:30 Uhr
+Ende:     18:00 Uhr
+
+__Schriftführer:__ Marwin Dörschel
+
+*Nächstes Treffen:* +
+04.12.2019, 16:40 Uhr, APB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+  -zeigen der Features der einzelnen Personen
+  -Treffen Do. 3 DS in der Slub
+  -Tests schreiben
+  -Design überlegen
+  
+== Aktueller Stand
+  -Anwendung funktioniert, aber noch nicht alles

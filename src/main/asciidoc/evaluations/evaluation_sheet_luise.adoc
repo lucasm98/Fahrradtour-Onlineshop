@@ -1,0 +1,29 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2019/20
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von:** Luise Balbier
+
+**Gruppe:** 40
+
+== Was habe ich gelernt?
+Ich habe viel über die Benutzung eines Frameworks bei der Erstellung einer Software gelernt. 
+Zudem habe ich zum ersten Mal eine Template Engine für HTML genutzt und somit einiges darüber gelernt.
+Auch bin ich nun deutlich sicherer bei der Nutzung von git für größere Gruppenprojekte.
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+Planung ist sehr wichtung und hat bei uns auch gut geklappt. Auch ist es wichtig, dass eigene Team nach Hilfe zu fragen, denn in solch einer großen Gruppe, kann einem meist jemand weiterhelfen.
+Zudem ist eine gute Leitung sehr wichtig. Ich habe mich nie verloren gefühlt und Marcel hat immer gut alles geplant und die Aufgaben verteilt.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+Dadurch wurden uns einige Sachen erleichtert, da man die Interfaces und Klassen von SalespOint nutzen konnte und so einige Programmierarbeit eingespart hat.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+Sehr großer Arbeitsaufwand und dadurch werden leider gerne andere Module im Semester vernachlässigt.
+
+== Feedback für den Tutor
+Unser Tutor hat ganz gut auf uns aufgepasst. Wenn wir fragen hatten, wurden diese immer gut beantwortet.
+
+== Sonstiges und Anmerkungen
+Keine

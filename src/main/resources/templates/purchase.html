@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{purchase.title}">Pay</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+        <h2 th:text="#{purchase.payment}"></h2>
+
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th th:text="#{purchase.type}">Name</th>
+                    <th th:text="#{purchase.price}">Type</th>
+                    <th th:text="#{purchase.count}">Anzahl</th>
+                    <th th:text="#{purchase.total}">Preis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${ecount} != 0">
+                    <td>
+                        <div class="ui text" th:text="'E-Fahrräder'">E-Rad</div>
+                    </td>
+                    <td th:text="'700 EUR'">700 EUR</td>
+                    <td>
+                        <div class="ui text"  th:text="${ecount}+' mal'">5 mal</div>
+                    </td>
+                    <td>
+                        <div class="ui text"  th:text="${eprice}">7000 EUR</div>
+                    </td>
+                </tr>
+                <tr th:if="${bcount} != 0">
+                    <td th:text="'Fahrräder'">Fahrrad</td>
+                    <td th:text="'300 EUR'">300 EUR</td>
+                    <td>
+                        <div class="ui text"  th:text="${bcount}+' mal'">7 mal</div>
+                    </td>
+                    <td>
+                        <div class="ui text"  th:text="${bprice}">10000 EUR</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="ui text"  th:text="'Punkte genutzt'">Gesamt</div>
+                    </td>
+                    <td>
+                        <div class="ui text"  th:text="${points}">Gesamt</div>
+                    </td>
+                    <td>
+                        <div class="ui text"  th:text="'Gesamt'">Gesamt</div>
+                    </td>
+                    <td>
+                        <div class="ui text"  th:text="${price}">17000 EUR</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+
+</html>

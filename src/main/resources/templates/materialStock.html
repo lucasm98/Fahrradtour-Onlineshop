@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+
+        <nav th:include="materialNavigation :: materialNavigation"></nav>
+    </div>
+</header>
+<div class="gbtd" >
+    <div th:if="${!bool}" class="ui header" STYLE=" float: right;">
+        All Materials are at least 3 Times in Stock
+    </div>
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/management/reStock}" th:object="${form}">
+        <div class="field" th:if="${bool}">
+                <table class="ui celled table" style="border-left: 2px solid #011006; border-right: 2px solid #0d8c39;">
+                    <thead>
+                    <tr>
+                        <th th:text="#{materialDetail.name}">MaterialID</th>
+                        <th th:text="#{materialDetail.quantity}">Quantity</th>
+                        <th th:text="#{materialDetail.loc}">location</th>
+                        <th th:text="#{materialDetail.locid}">locationID</th>
+                        <th><i class="check circle outline icon"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                    <tr th:each=" material : ${catalog}" >
+                        <td th:text="${material.name}">yyyy/mm/dd</td>
+                        <td>
+                            <table>
+                                <tr>
+
+
+                                    <th style="padding:5px 20px 5px 15px;border-left:0;">
+
+                                        <div class="text" th:text="${material.quantity}">Anzahl</div>
+
+                                    </th>
+
+
+                            </table>
+                        </td>
+                        <td th:text="${material.loc}" th:for="${material.locid}">N/A</td>
+                        <td th:text="${material.locid}">N/A</td>
+                        <td>
+                            <input type="checkbox" th:name="ids" th:id="${material.id}" th:value="${material.id}" checked>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+        </div>
+
+    <button type="submit" class="ui button" th:text="#{materialStock.buy}" style=" float: right;padding-top:10px;" th:if="${bool}">Buy</button>
+    <br th:if="${bool}"></br>
+    </form>
+
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

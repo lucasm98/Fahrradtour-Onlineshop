@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"
+                src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+                src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+        <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+              href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+        <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+              href="../static/resources/css/style.css" type="text/css"/>
+
+        <title th:text="#{cart.title}">Cart</title>
+    </head>
+    <script>
+        function calcSum(){
+        // i = columns
+        // just sum col 6
+            for (i=2;i<3;i++){
+                sum=0;
+        // j = rows down
+        // change j=0; to j=1; to skip top row
+        // work down 12 rows
+                for (j=1;j<12;j++)
+                    sum+=1*document.getElementById("numTable").rows[i].cells[j].innerHTML;
+                document.getElementById("numTable").rows[j].cells[i].innerHTML=sum;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="ui container ">
+        <header th:replace="template :: header"></header>
+
+        <div class="ui segment">
+            <h2 th:if="${cart.empty}" th:text="#{cart.empty}">Empty</h2>
+            <div class="ui header" th:if="${!cart.empty}">Einkaufswagen :</div>
+            <div th:if="${!cart.empty}">
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th th:text="#{cart.name}">Name</th>
+                            <th th:text="#{cart.type}">Type</th>
+                            <th th:text="#{cart.price}">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="bike : ${bikes}">
+                            <td th:text="${bike.name}"></td>
+                            <td th:text="${bike.bikeType}"></td>
+                            <td id="numTable" th:text="${bike.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form method="post" role="form" class="ui form" id="form" th:action="@{/payment}">
+                    <h2 th:text="'Punkte auswählen : '"></h2>
+                    <select class="form-control" name="credits" id="credits" required>
+                        <option value="0" th:text="'0'">
+                        <option value="1" th:text="'1'">
+                        <option value="2" th:text="'2'">
+                        <option value="3" th:text="'3'">
+                        <option value="4" th:text="'4'">
+                        <option value="5" th:text="'5'">
+                    </select>
+                    <div class="ui header" id="rightfloated" th:text="'Gesamt : '+${price.toString()}"></div>
+                    <table class="ui celled table">
+                        <thead>
+                        <tr>
+                            <th th:text="'Barzahlung'">Name</th>
+                            <th th:text="'Überweisung'">Type</th>
+                        </tr>
+                        </thead>
+                        <tbody th:remove="all-but-first">
+                        <tr>
+                            <td><input type="radio" th:name="ids" th:id="bar" th:value="bar"></td>
+                            <td><input type="radio" th:name="ids" th:id="card" th:value="card" checked></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="ui button" th:text="'Kaufen'" style=" float: right;padding-top:10px;">Buy</button>
+                </form>
+                <br>
+            <br>
+            </div>
+
+        </div>
+    </div>
+    <footer th:replace="template :: footer"></footer>
+
+</body>
+</html>

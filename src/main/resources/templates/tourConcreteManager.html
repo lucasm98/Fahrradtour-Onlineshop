@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{tourManager.manage.title}">Tour Manager</title>
+</head>
+<body>
+<div class="ui centered container">
+    <header th:replace="template :: header"></header>
+    <a href="/management/tourManager">
+        <div class="button ui green right aligned">Erstelle konkrete Tour</div>
+    </a>
+    <div class=" ui segment">
+        <div class="ui table">
+            <table class="ui attached table">
+                <thead>
+                <tr>
+                    <th th:text="#{tourManager.tour}">Tour</th>
+                    <th th:text="#{tourManager.start}">Start</th>
+                    <th th:text="#{tourManager.end}">End</th>
+                    <th th:text="#{tourConcreteManager.create.priceCategory}">Price Category</th>
+                    <th th:text="#{tourManager.status}">Status</th>
+                    <th th:text="#{tourManager.statusChange}">Status ändern</th>
+                    <th th:text="#{tourManager.cancel}">Stornieren</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tour : ${catalog}">
+                    <td class="">
+                        <a th:href="@{/tour/{id}(id=${tour.id})}" th:text="${tour.name}"></a>
+                    </td>
+                    <td th:text="${tour.getGermanStart()}">Start</td>
+                    <td th:text="${tour.getGermanEnd()}">End</td>
+                    <td th:text="${tour.priceCategory}">Price Category</td>
+                    <td th:text="${tour.status}">Status</td>
+                    <td class="right aligned">
+                        <div th:if="!${tour.isCanceled()}">
+                        <form class="ui form" method="post" th:action="@{/management/setState/{id}(id=${tour.id})}">
+                            <div class="ui large buttons">
+                                <button th:if="${tour.getStatusBool()}" name="state" th:value="INACTIVE"
+                                        th:text="#{tourManager.state.inactive}" type="submit" class="ui red button">
+                                    Active
+                                </button>
+                                <button th:if="!${tour.getStatusBool()}" name="state" th:value="ACTIVE"
+                                        th:text="#{tourManager.state.active}" type="submit" class="ui button">Inactive
+                                </button>
+                            </div>
+                        </form>
+                        </div>
+                    </td>
+                    <td>
+                        <form th:if="${tour.concreteTourCancelable()}" class="ui reply form" role="form"
+                              th:action="@{cancelTour/{id}(id=${tour.id})}" method="post">
+                            <button class="ui right floated button" th:type="submit" th:text="#{tour.cancel}">
+                                Cancel Tour
+                            </button>
+                        </form>
+                        <form th:if="!${tour.concreteTourCancelable()}" class="ui reply form" role="form">
+                            <button class="ui right floated button" style="background-color: grey" th:text="#{tour.cancel}">
+                                Cancel Tour
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

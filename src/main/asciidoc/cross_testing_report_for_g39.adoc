@@ -1,0 +1,71 @@
+= Cross-Testing Feedback
+
+__Durchführende Gruppe:__40 +
+__Anwendung von Gruppe:__39
+
+== Getestetes System
+* Registrierung / Deaktivierung des Kontos
+* Persönliche Datenverwaltung (Name, Geburtsdatum, Adresse, Email, Telefonnummer,..)
+* Buchen und Stornieren der Reise (+ Bezahlung der Reise)
+* Reisehistorie einsehen
+* Treuepunkte einsehen
+* Bearbeiten der Kundenbuchung (erstellen, verändern, stornieren) (Formular)
+* Offene Rechnungen bearbeiten
+* Vermerken von Krankheits-, Versicherungsfällen (Formular)
+* Nachkaufen von Fahrrädern
+* Mitarbeiter hinzufügen
+* Buchungssystem (Kreditkarte, Bar, Rechnung)
+* Ersatzteile bestellen/verteilen/zuordnen/erstellen
+* Tross bearbeiten/erstellen und Ersatzteile hinzufügen
+
+== Fehler-Report
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="header"]
+|===
+|Pfad |Parameter |Beschreibung |Rückgabe
+| http://localhost:8080/customers/customerEdit/fabi | - | Löschen des User mit gebuchten Touren | Whitelabel Error
+| http://localhost:8080/newTravel/e8afcf36-b567-45ae-982d-115126b52fff (id) |String eingabe anstatt Integer Werten |Erstellen einer neuen Tour |Whitelabel Error
+| http://localhost:8080/add | Anzahl>1000000000000 | Ersatzteil erstellen | Whitelabel Error
+| ... | | | |
+|===
+
+== Sonstiges
+
+* Canceln der Tour nur über den Admin möglich
+* Bei Bearbeitung der Tour keine Validierung, ob der Name das Bildes existiert
+* Neue Reise Form erstellt keine neue Reise
+* Layout-Fehler nach löschen der ersten Buchung (Button verrutschen) in eine andere
+  Zeile
+* Layout-Fehler beim Anzeigen der Kunden als Admin
+* keine Validierung der bearbeiteten Benutzerdaten (muss keine E-Mail sein, Texte können
+  Zahlen sein)
+* Bearbeiten Icon der Touren wird nicht angezeigt
+* kein ersichtlicher Kauf von Fahrrädern möglich, weder als Kunde noch als Mitarbeiter
+
+* Tour kann mit Kreditkarte bezahl werden, auch wenn der Preis über dem Limit der Karte ist
+* Verfügbarkeit ändert sich nach Buchung einer Tour nicht
+* Tour kann über der Verfügbarkeit heraus gebucht werden, indem man sie mehrmals in den Warenkorb legt bevor man bezahlt
+* keine Validierung der Kreditkarten Daten (Name kann eine Ziffer sein, Kartennummer kann aus Buchstaben bestehen, ...)
+* Nach Buchung einer Tour, soll die Zahl der verfügbare Plätze aktualisiert werden.
+* Bei Buchung der Tour (Kreditkarte), kann man irgendwas in "VISA / MASTER / AMEX" Feld einfügen
+
+* neu erstellte Ersatzteile sind nicht mehr in der Ersatzteile übersicht zu sehen, nach dem sie einem Tross zugeordnet wurden
+* Ersatzteile können nicht für mehre Stationen verwendet werden und müssen immer neu erstellt werden
+* schlechte Übersicht bei der Ersatzteilseite, wo ich welches Ersatzteil finde
+* englische Begriffe auf sonst deutscher Seite. z.B. "Assigned" und "Unassigned"
+* hinzufügen von Ersatzteil/Tross ohne Namen ist möglich
+* keine maximal Anzahl beim Erstellen der Ersatzteile
+* jedes Ersatzteil muss einzeln gelöscht/zugeordnet werden
+* Tross,Stationen und Ersatzteile teilen sich ID-Raum
+* kein Validator beim Erstellen einer Station(Adresse)
+* Station bearbeiten, vergleicht nicht ob es den Namen oder die Adresse schon gibt
+* beim Zuordnen von Ersatzteilen aus einer Station funktioniert die Suche nicht
+
+== Verbesserungsvorschläge
+
+* Ist der Home-Link sinnvoll? Klick auf NBB Bike Tours hat die gleiche Funktion
+* Beim Buchen als uneingeloggter User wird man nach Login auf den Index weitergeleitet, der
+Buchungsprozess muss also noch mal von vorne gemacht werden
+* Dropdown-Liste für das "VISA / MASTER / AMEX" Feld
+* hinzufügen einer Standortes bei der Ersatzteilseite zur besseren übersicht
+* Sortiermöglichkeiten für die Ersatzteile

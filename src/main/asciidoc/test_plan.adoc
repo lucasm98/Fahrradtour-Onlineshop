@@ -1,0 +1,289 @@
+= Test-Plan
+
+Dieser Testplan stellt eine vereinfachte Version der IEEE 829-1998 Vorlage dar.
+
+== Einführung
+
+Dieses Dokument stellt eine Übersicht der verschiedenen Tests für das System,
+deren Aufbau sowie die Herangehensweise an das Testverfahren. Es richtet sich sowohl an die Entwickler, als auch an den Kunden.
+
+== Aufbau der Testbezeichner
+
+Die Benennung der Tests erfolgt nach folgendem Schema:
+
+Testart_Testname_ID
+
+beispielsweise: +
+ U_Order_001 (Der erste Unittest der Klasse Order)
+I_Tour_001 (Der zweite Integrationstest der Klasse Tour)
+
+== Test Gegenstände
+
+Zu testender Gegenstand ist das zu entwickelnde
+Software-System mit allen seinen Klassen
+und Methoden. Außerdem zu testen ist die
+Interaktion der einzelnen Komponenten miteinander.
+
+== Zu testende Funktionalitäten
+
+Es sollen alle Packages mit all ihren
+Klassen getestet werden.
+
+== Nicht zu testende Funktionalitäten
+z.B. Bibliotheken von Drittanbietern (eigene Tests beschränken sich auf Schnittstelle, bzw. Zusammenspiel).
+
+== Herangehensweise
+
+*JUnit:* +
+-Einzelne Methoden der Klassen.
+
+*Integrationstest:* +
+- Zusammenarbeit von Methoden +
+- Zusammenarbeit von Klassen +
+- Zusammenarbeit von Modulen (Packages)
+
+== Umgebungsvoraussetzungen
+
+*Software*
+
+Für das Testen wird Java in der Version 8 oder höher benötigt
+
+*Hardware*
+
+Es gibt keine speziellen Hardware-Vorraussetzungen.
+Man braucht lediglich eine Workstation (bsp. Laptop, Desktop-PCs)
+,welche zumindest die minimalen Anforderungen zum Ausführen lokaler Webanwendungen erfüllt.
+
+*Daten*
+Die benötigten Beispieldaten werden mittels eines von Salespoint gestellten
+DataInitializers bereitgestellt und im Vorfeld vom einem Entwickler
+als Beispieldatensatzes eingegeben.
+
+*Zusätzliche Testsoftware*
+
+Keine zusätzliche Software ist nötig. Die Test werden mittels JUnit und
+Spring implementiert.
+
+Da die Software anfangs nur lokal ausgeführt wird, wird keine Verbindung über
+das Internet benötigt. Im späteren Verlauf, kann auch das Internet Verwendung finden.
+
+== Testfälle und Verantwortlichkeit
+Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
+
+[options="headers"]
+|===
+|Package | Entwickler
+|User   | Marcel Körner
+|Tour | Julian Möller
+|Order |Marwin Dörschel
+|Resupply  |Muhammad Ibrahim Rahman
+|Booking | Luise Balbier
+|... |...
+|===
+
+// See http://asciidoctor.org/docs/user-manual/#tables
+
+*User*
+
+[options="headers", col="1h, 4"]
+|===
+|ID |U_User_001
+|Anwendungsfall  |Nutzer loggt sich ein
+|Vorbedingungen   |Nutzer ist bereits registriert
+|Eingabe  |Nutzername und Password
+|Ausgabe    |Nutzer hat Zugriff auf seine Bereieche abhängig von seinen Rollen
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |U_User_002
+|Anwendungsfall  |Neuer Nutzer registriert sich
+|Vorbedingungen   |Nutzer noch nicht registriert und Eingabedaten werden ohne Fehlermeldung validiert
+|Eingabe  |Nutzername, Vorname, Nachnachme, Adresse, E-Mail, Passwort
+|Ausgabe    |Nutzer ist registriert 
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |U_User_003
+|Anwendungsfall  |Admin hat eine Übersicht über alle Nutzer
+|Vorbedingungen   |Es existieren bereits registrierte Nutzer und Admin hat Rolle "BOSS"
+|Eingabe  |Erfolgreiches Anmelden
+|Ausgabe    |Übersicht aller Nutzer
+|===
+
+[options="headers", col="1h, 4"]
+|===
+|ID |U_User_004
+|Anwendungsfall  |Admin kann neuen Reiseleiter anlegen
+|Vorbedingungen   |Admin hat Rolle "BOSS"
+|Eingabe  |Nutzerdaten des Reiseleiters
+|Ausgabe    |Reiseleiter wurde erfolgreich angemeldet und taucht auf der Übersichtsseite aller Nutzer auf.
+|===
+
+*Versorgung*
+
+[options="headers", col="1h, 4"]
+|===
+|ID             |U_Resupply_001
+|Anwendungsfall |Eine neue Versorgungsstation erstellen
+|Vorbedingungen |Benutzer ist eingeloggt und hat die Rolle "Admin"
+|Eingabe        |Admin schickt ein ausgefüllte Formular ab
+|Ausgabe        |Die neue Versorgungstation wird im Versorgungskatalog gespeichert
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID             |U_Resupply_002
+|Anwendungsfall |Eine neue Versorgungsstation erstellen
+|Vorbedingungen |Benutzer ist eingeloggt und hat die Rolle "Admin"
+|Eingabe        |Benutzer schickt ein Formular mit minderstens einem fehlenden/fehlerhaften Feld ab
+|Ausgabe        |Es wird keine neue Versorgungsstation erstellt. Eine Fehlermeldung wird ausgegeben
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID             |U_Resupply_003
+|Anwendungsfall |Die Inventarliste einer Versorgungsstation bearbeiten
+|Vorbedingungen |Benutzer ist eingeloggt und hat die Rolle "Admin"
+|Eingabe        |Benutzer klickt auf "Liste bearbeiten" und schickt ein ausgefüllte Formular mit den neuen Mengen ab
+|Ausgabe        |Die Inventarliste der entsprechender Versorgungsstation wird aktualisiert
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID             |U_Resupply_004
+|Anwendungsfall |Eine Versorgungsstation löschen
+|Vorbedingungen |Benutzer ist eingeloggt und hat die Rolle "Admin"
+|Eingabe        |Benutzer klickt auf "Löschen"
+|Ausgabe        |Die entsprechende Versorgungsstation (mit ihrer Inventarliste) wird vom Versorgungskatalog entfernt
+|===
+
+*Buchung*
+[options="headers", col="1h, 4"]
+|===
+|ID | U_Booking_001
+|Anwendungsfall  | Eine Buchung beginnen
+|Vorbedingungen   | Benutzer ist angemeldet und befindet sich auf der Seite, der zu buchenden Tour.
+|Eingabe  | Benutzer klickt auf "Buchen"
+|Ausgabe    | Neue Buchung wird erstellt.
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID | U_Booking_002
+|Anwendungsfall  | Eine Buchung bezahlen
+|Vorbedingungen   | Benutzer hat Buchung erfolgreich begonnen.
+|Eingabe  | Benutzer wählt Bezahlungsmethode aus und klickt auf "Bezahlen".
+|Ausgabe    | Buchung wird abgeschlossen und es wird gespeichert, dass die Buchung bezahlt ist und
+                erfolgreich abgeschlossen ist. Benutzer bekommt Bestätigung.
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID | U_Booking_003
+|Anwendungsfall  | Existierende Buchung löschen
+|Vorbedingungen   | Es existiert eine Buchung und der Benutzer hat die Rolle "Admin"
+|Eingabe  | Der Benutzer klickt auf "Buchung löschen"
+|Ausgabe    | Die Buchung wird aus der Liste der Buchungen gelöscht
+|===
+[options="headers", col="1h, 4"]
+
+*Tour*
+
+[options="headers", col="1h, 4"]
+|===
+|ID |U_Tour_001
+|Anwendungsfall  |Als unangemeldeter Benutzer sehe ich alle angebotenen Touren
+|Vorbedingungen   |--
+|Eingabe  |Navigation zur /tour Seite
+|Ausgabe    |Alle angebotenen Touren
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Tour_002
+|Anwendungsfall  |Erstellen einer Tour
+|Vorbedingungen   |Als Admin angemeldet
+|Eingabe  |Ausfüllen eines "Create Tour"-Formulars mit allen erforderlichen Informationen
+|Ausgabe    |erstellte Tour
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Tour_003
+|Anwendungsfall  |Admin löscht Tour
+|Vorbedingungen   |Als Admin eingeloggt und auf der "Manage Tour"-Seite
+|Eingabe  |klicken das "Löschen" Buttons hinter der gewählten Tour
+|Ausgabe    |Tour wurde gelöscht
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Tour_004
+|Anwendungsfall  |User geht auf die Detailansicht
+|Vorbedingungen   |Nutzer ist im Tourenkatalog
+|Eingabe  |Klicken auf die gewünschte Tour
+|Ausgabe    |Detailansicht der Tour wird angezeigt
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Tour_005
+|Anwendungsfall  |Admin gibt beim Erstellen einer neuen Tour nicht alle Daten vollständig an
+|Vorbedingungen   |Als Admin eingeloggt und im "Create Tour"-Formular
+|Eingabe  |nicht alle erforderlichen Informationen, um eine Tour zu erstellen
+|Ausgabe    |Fehlermeldung im Formular
+|===
+
+*Order*
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Order_001
+|Anwendungsfall  |User will alle Orders sehen
+|Vorbedingungen   |Als Admin eingelogt und im Management Bereich
+|Eingabe  |Klicken auf Management
+|Ausgabe    |Detailansicht, falls tatsächlich Admin
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Order_002
+|Anwendungsfall  |User will Rabatt für Kauf eines Fahrrads
+|Vorbedingungen   |Als Kunde eingelogt, im Kauf Menu und nicht genug Treuepunkte
+|Eingabe  |Klicken auf Kauf mit Rabatt
+|Ausgabe    |Sie haben nicht genug Treuepunkte
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Order_003
+|Anwendungsfall  |User will ein Fahrrad kaufen
+|Vorbedingungen   |Als Kunde eingelogt, im Kauf Menu und noch keine Tour gemacht
+|Eingabe  |Klicken auf Fahrrad
+|Ausgabe    |Nicht möglich, da nohc kein Fahrrad zur Auswahl 
+|===
+
+
+*Material*
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Material_001
+|Anwendungsfall  |User will ein Material einsehen
+|Vorbedingungen   |Als Admin oder Reiseleiter eingelogt und im MaterialManagement Bereich
+|Eingabe  |Klicken auf Material
+|Ausgabe    |Detailansicht, falls tatsächlich Admin oder Reiseleiter
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Material_002
+|Anwendungsfall  |User will Material erstellen
+|Vorbedingungen   |Als Admin eingelogt und im MaterialManagement Bereich
+|Eingabe  |Klicken auf Material hinzufügen und gibt valide Daten ein und beendet den Vorgang mit "Hinzufügen"
+|Ausgabe    |Material wird erstellt und im Catalog eingetragen weiterleitung zum MaterialManagement
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Material_003
+|Anwendungsfall  |User will Material suchen
+|Vorbedingungen   |Als Admin oder Reiseleiter eingelogt und im MaterialManagement Bereich
+|Eingabe  |Gibt Daten im Suchbereich ein und Klickt auf Suchen
+|Ausgabe    |Es werden die passenden Materialien angezeigt
+|===
+[options="headers", col="1h, 4"]
+|===
+|ID |I_Material_004
+|Anwendungsfall  |User will alle Materialien einsehen
+|Vorbedingungen   |Als Admin oder Reiseleiter eingelogt und im Management Bereich
+|Eingabe  |Klicken auf MaterialManagment
+|Ausgabe    |Es werden alle Materialien angezeigt
+|===

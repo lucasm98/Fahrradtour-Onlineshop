@@ -1,0 +1,54 @@
+= Protokoll Gruppe 40
+
+Treffen am 30.10.2019
+
+Ort:      APB e007
+Beginn:   16:40 Uhr 
+Ende:     17:40 Uhr
+
+__Schriftführer:__ Lucas Martin
+
+*Nächstes Treffen:* +
+6.11.2019, 16:40 Uhr, Foyer APB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+
+== Bemerkungen
+Bis Sammstag 16 Uhr sollen die fertigen UML-Diagramme in das Github Repository
+gepusht werden, damit alles zusammen gefügt werden kann.
+Die Bilder und Texte müssen in das Pflichtenheft eingetragen werden.
+
+Bis Sonntag 0 Uhr abends, soll das Pflichtenheft und die Videoshop Aufgaben von jedem hochgeladen sein.
+Die fertige Videoshop Aufgabe wird dann in die eigenen Branches gepusht.
+
+*geklärte Fragen/Hinweise:*
+
+*Sequenzdiagramme für : -Kunde,Reiseleiter,(Veranstalter)
+*eine Tour besteht aus genau einer Preisklasse
+*keine String als Datentyp verwenden lieber enum
+*Kaufprozess ist unmittelbar, also keine mehreren States
+*Krankschreibungen als Meldungen
+
+Allgemeine Wünsche die zu erfüllen sind:
+	-Personal soll zu verwalten sein	
+	-Kunden sollen zu verwalten sein
+	-Tourplan
+	-Tourdetails
+	-Buchung/Kauf
+	-Zahlungsarten
+	-Katalog mit Bildern und z.B. Bewertung
+	-mehreren Standorte (Versorgungsstationen)
+	
+
+
+== Aktueller Stand
+Diagramme so gut wie Fertig und Videoshopaufgabe wird bearbeitet.

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<nav th:fragment="materialNavigation">
+    <div class="ui menu" style="margin:5px 0;border-bottom: 2px solid #011006;border-top: 2px solid #0d8c39;">
+        <a class="item">
+            <div class="ui action input">
+                <form class="ui form" method="post" th:action="@{/management/materialSearch}">
+                    <table>
+                        <tr>
+                            <th>
+                                <input type="text" id="search" name="search" placeholder="Search..." th:value="${search}"  data-cip-id="cIPJQ342845657">
+                            </th>
+                            <th>
+                                <button class="ui button" type="submit">Suchen</button>
+                            </th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </a>
+        <a class="item" th:href="@{/management/materialManager}">       <i class="coffee icon"></i>         <div th:text="#{materialManager.all}">Alles</div></a>
+        <a class="item" th:href="@{/management/material/ersatz}">       <i class="briefcase icon"></i>      <div th:text="#{materialManager.parts}">Ersatzteile</div></a>
+        <a class="item" th:href="@{/management/material/versorgung}">   <i class="coffee icon"></i>         <div th:text="#{materialManager.supply}">Versorgung</div></a>
+        <a class="item" th:href="@{/management/addMaterial}">           <i class="add to cart icon"></i>    <div th:text="#{materialManager.add}">Inventar erstellen</div></a>
+        <a class="item" th:href="@{/management/materialStock}">         <i class="clipboard list icon"></i> <div th:text="#{materialManager.stock}">Knappe Materialien</div></a>
+    </div>
+</nav>
+
+
+</body>
+</html>

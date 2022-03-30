@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{tourManager.create.title}">Create Concrete Tour</title>
+</head>
+<body>
+
+<div class="ui container">
+
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+    <h3 th:text="#{tourConcreteManager.your.tour}">Your Tour:</h3>
+    <div class="ui relaxed divided items">
+        <div class="ui item">
+            <div class="ui small image">
+                <a th:href="@{/tour/{id}(id=${tour.id})}">
+                    <img th:src="@{/resources/img/{name}.jpg(name=${tour.image})}"
+                         src="../static/resources/img/foTo.jpg">
+                </a>
+            </div>
+            <div class="content">
+                <a class="header" th:href="@{/tour/{id}(id=${tour.id})}" th:text="${tour.name}">Tour Header</a>
+                <div class="meta">
+                    <span th:text="#{tourManager.create.name}">Name</span>
+                    <span class="ui fade right" th:text="${tour.name}">Name</span><br>
+                    <span th:text="#{tourManager.capacity}">Capacity</span>
+                    <span class="ui fade right" th:text="${tour.capacity}">Capacity</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui section divider"></div>
+
+    <form method="post" role="form" class="ui form" id="form" name="form" th:action="@{/management/{id}/concreteTourForm(id=${tour.id})}" th:object="${form}">
+
+    <!-- selection for tour guide -->
+        <div class="ui relaxed divided items">
+            <h3 th:text="#{tourConcreteManager.your.guide}">Your Guide</h3>
+            <div class="ui item" th:object="${tourGuides}">
+                <select id="tourGuide" name="tourGuide">
+                    <option disabled selected hidden>Select Tour Guide</option>
+                    <option th:each="tourGuide : ${tourGuides}"
+                            th:value="${tourGuide.getUsername()}"
+                        th:text="${tourGuide.firstname + ' ' + tourGuide.lastname}">tourGuide</option>
+                </select>
+            </div>
+        </div>
+    <!-- start date -->
+        <div class="field">
+            <label th:text="#{tourConcreteManager.create.start}" for="start">Startdatum</label>
+            <input id="start" name="start" type="date" required="required"/><br/>
+        </div>
+    <!-- end date -->
+        <div class="field">
+            <label th:text="#{tourConcreteManager.create.end}" for="end">Enddatum</label>
+            <input id="end" name="end" type="date" required="required"/><br/>
+        </div>
+
+        <div class="field">
+            <label th:text="#{tourConcreteManager.create.price}">Price</label>
+            <input type="text" name="price" id="price"
+                   pattern="^\d+(\.|\,)\d{2}€" value="" data-type="currency" placeholder="€ 100,00">
+        </div>
+
+    <!-- price category -->
+    <div class="field">
+        <label th:text="#{tourConcreteManager.create.priceCategory}">Price Category</label>
+        <select id="priceCategory" name="priceCategory" required="required">
+            <option disabled selected hidden>Preiskategorie wählen</option>
+            <option th:value="STANDARD">Standard</option>
+            <option th:value="ECONOMY">Economy</option>
+            <option th:value="LUXURY">Luxury</option>
+        </select>
+    </div>
+
+    <!-- active inactive status-->
+        <div class="field">
+            <label th:text="#{tourConcreteManager.create.status}">Status</label>
+            <select id="status" name="status" required="required">
+                <option disabled selected hidden>Select Status</option>
+                <option th:value="INACTIVE">Inactive</option>
+                <option th:value="ACTIVE">Active</option>
+            </select>
+        </div>
+        <button type="submit" class="ui button green" th:text="#{tourManager.create.tour}">Create</button>
+    </form>
+    </div>
+    <br>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

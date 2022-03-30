@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{resupplyManager.edit}">Edit Resupply</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+    <form method="post" role="form" class="ui form" id="resupplyEditForm"  th:action="@{/management/resupplyManager/editResupply/{id}(id=${resupply.id})}" th:object="${resupplyEditForm}">
+
+        <div class="field">
+            <label for="name" th:text="#{resupplyManager.edit.form.name}">Resupply Name</label>
+            <input id="name" name="name"  type="text" th:value="${resupply.name}" required="required" /><br/>
+        </div>
+
+        <div class="field">
+            <label for="street" th:text="#{resupplyManager.edit.form.street}">Street</label>
+            <input id="street" name="street"  type="text" th:value="${resupply.getAddress().getStreet()}" required="required" /><br/>
+        </div>
+
+        <div class="field">
+            <label for="number" th:text="#{resupplyManager.edit.form.number}">Number</label>
+            <input id="number" name="number"  type="number" th:value="${resupply.getAddress().getNumber()}" required="required" /><br/>
+        </div>
+
+        <div class="field">
+            <label for="cityCode" th:text="#{resupplyManager.edit.form.cityCode}">City Code</label>
+            <input id="cityCode" name="cityCode"  type="number" th:value="${resupply.getAddress().getCityCode()}" required="required" /><br/>
+        </div>
+
+        <div class="field">
+            <label for="city" th:text="#{resupplyManager.edit.form.city}">City</label>
+            <input id="city" name="city"  type="text" th:value="${resupply.getAddress().getCity()}" required="required" /><br/>
+        </div>
+
+        <button type="submit" class="ui button" th:text="#{resupplyManager.edit.resupply}">Edit</button>
+    </form>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

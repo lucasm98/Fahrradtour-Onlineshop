@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+
+        <nav th:include="materialNavigation :: materialNavigation"></nav>
+    </div>
+</header>
+
+
+<div class="gbtd">
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/management/addMaterialToCatalog}" th:object="${form}">
+
+        <h3 class="ui dividing header" th:text="#{materialAdd.invdata}">Nutzerdaten</h3>
+
+
+
+        <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name"  type="text" required="required"  style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"/><br/>
+        </div>
+
+        <div class="field">
+            <label for="description">Beschreibung</label>
+            <input id="description" name="description"  type="text" required="required"  style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"/><br/>
+        </div>
+        <div class="field">
+            <label >Type</label>
+
+            <fieldset style="border:0;">
+                <table class="ui menu" style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;">
+                    <tr>
+                        <td style="padding: 10px 12px 5px 15px;">
+                            <label for="ersatz">
+                                <input type="radio" name="type" id="ersatz" value="ersatz" checked> Ersatzteil
+                            </label>
+
+                        </td>
+                        <td style="padding: 10px 12px 5px 15px;">
+                            <label for="versorgung">
+                                <input type="radio" name="type" id="versorgung" value="versorgung"> Versorgung
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </fieldset>
+        </div>
+        <div class="field">
+            <input id="quantity" type="number" name="quantity" min="1" max="100" step="1" value="1"  style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;"/>
+        </div>
+        <div class="field">
+            <label >Resupplystation</label>
+            <fieldset style="border:0;">
+                <table class="ui menu" style="border-left: 2px solid #1B1C1D;border-right: 2px solid green;">
+                    <tr>
+                        <td th:each="resupply : ${array}" style="padding: 10px 12px 5px 15px;">
+                            <label  th:for="${resupply.id}">
+                                <input type="checkbox" name="loc" th:id="${resupply.id}" th:value="${resupply.id}" checked th:text="${resupply.id}">
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </fieldset>
+        </div>
+
+        <button type="submit" class="ui button" th:text="#{materialAdd.reg}">Registrieren</button>
+    </form>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

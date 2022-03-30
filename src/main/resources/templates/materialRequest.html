@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class=" ui segment">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th th:text="#{materialRequest.id}">ID</th>
+                <th th:text="#{materialRequest.name}">Name</th>
+                <th th:text="#{materialRequest.anzahl}">Quantity</th>
+                <th th:text="#{materialRequest.loc}">Location</th>
+                <th th:text="#{materialRequest.status}">Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+            <tr th:each="request : ${list}">
+                <td th:text="${request.id}">id</td>
+                <td th:text="${request.material.getName()}">name</td>
+                <td th:text="${request.anzahl}">anzahl</td>
+                <td>
+                    <a class="ui header" th:text="${request.resupply.getName()}"
+                       th:href="@{'/management/resupplyStation/'+${request.resupply.getId()}}">address</a>
+                </td>
+                <td th:text="${request.getStatus()}"></td>
+                <td>
+                    <div th:if="${request.getStatus().toString() == 'Open'}">
+<!--                        <span>-->
+                            <form style="display:inline" class="ui form" method="post" th:action="@{/management/materialRequest/confirm/{id}(id=${request.getId()})}">
+                                <button class="ui green button"
+                                        th:value="${request.id}" name="id" type="submit"
+                                        th:text="#{materialRequest.confirm}"></button>
+                            </form>
+                            <form style="display:inline" class="ui form" method="post" th:action="@{/management/materialRequest/deny/{id}(id=${request.getId()})}">
+                                <button class="ui red button" th:value="${request.id}" name="id" type="submit"
+                                        th:text="#{materialRequest.deny}"></button>
+                            </form>
+<!--                        </span>-->
+                    </div>
+
+                    <div th:if="${request.getStatus().toString() == 'Confirmed'}">
+                        <form class="ui form" method="post" th:action="@{/management/materialRequest/undo/{id}(id=${request.getId()})}">
+                            <button class="ui orange button"
+                                    th:value="${request.id}" name="id" type="submit"
+                                    th:text="#{materialRequest.undo}"></button>
+                        </form>
+                    </div>
+
+                    <div th:if="${request.getStatus().toString() == 'Denied'}">
+
+                        <form class="ui form" method="post" th:action="@{/management/materialRequest/undo/{id}(id=${request.getId()})}">
+                            <button class="ui orange button" th:value="${request.id}" name="id" type="submit"
+                                    th:text="#{materialRequest.undo}"></button>
+                        </form>
+                    </div>
+
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

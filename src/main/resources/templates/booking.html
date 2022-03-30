@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{booking.title}">Book Tour</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <!--    <div class="content">-->
+    <!--        <h1 th:text="" ></h1>-->
+    <div class="ui segment">
+        <div class="ui item">
+            <h2 th:text="#{booking.text}"></h2>
+            <p><span th:text="${tour.getName()}"></span</p>
+            <p><span th:text="#{bookingList.start}"></span>: <span th:text="${tour.getGermanStart()}"></span></p>
+            <p><span th:text="#{bookingList.end}"></span>: <span th:text="${tour.getGermanEnd()}"></span></p>
+            <p><span th:text="'Preis pro Person'"></span>: <span th:text="${tour.getPrice()}"></span></p>
+
+            <h3 th:text="#{booking.quantity}"></h3>
+            <!--
+            <span th:text="${tour.getTour().getName()}"></span><br>
+            <span th:text="${tour.getStart()}"></span><br>
+            <span th:text="${tour.getEnd()}"></span><br>
+            <span th:text="${tour.getFree()}"></span><br>
+            -->
+        </div>
+        <form class="ui form" method="post" th:action="@{/booking/{id}(id=${tour.getId()})}">
+            <select class="form-control" name="quantity" id="quantity">
+                <option th:each="quantity : ${#numbers.sequence(1, tour.getFree())}" th:value="${quantity}"
+                        th:text="${quantity}">
+            </select>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th th:text="'Barzahlung'">Name</th>
+                    <th th:text="'Überweisung'">Type</th>
+                </tr>
+                </thead>
+                <tbody th:remove="all-but-first">
+                <tr>
+                    <td><input type="radio" th:name="ids" th:id="bar" th:value="bar"></td>
+                    <td><input type="radio" th:name="ids" th:id="card" th:value="card" checked></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="overflow: hidden">
+                <button class="ui right floated button" type="summit" id="checkout" th:text="#{booking.checkout}"></button>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

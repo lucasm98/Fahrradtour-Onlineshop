@@ -1,0 +1,35 @@
+= Protokoll Gruppe 40
+
+Treffen am 19.11.2019
+
+Ort:      APB E067
+Beginn:   17:00 Uhr
+Ende:     18:00 Uhr
+
+__Schriftführer:__ Lucas Martin
+
+*Nächstes Treffen:* +
+27.11.2019, 16:40 Uhr, APB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+  -Testplan noch machen
+  -Dokumentation ist soweit ok
+  -zeigen der Features der einzelnen Personen
+  -Treffen Do. 3 Ds. Slub
+  -Git Branch wecheln :
+    -Git pull
+    -Git checkout dev
+
+
+== Aktueller Stand
+Dokumentation hat gut geklappt.

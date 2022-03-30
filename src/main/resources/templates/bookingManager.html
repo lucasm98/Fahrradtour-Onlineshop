@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{bookingManager.title}">Booking Manager</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class=" ui segment">
+
+        <div th:if="!${bookingViews.isEmpty()}">
+            <div class="ui header">
+                Alle Buchungen :
+            </div>
+            <div class="gbtd" th:each="bookingView : ${bookingViews}">
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="'Nutzer '"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getUserName()}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getQuantity()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.quantity}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.start}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getGermanStart()}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getGermanEnd()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.end}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getStatus()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.status}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.bookingId}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getBookingId()}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="'Gesamt '"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.price}+' EUR'"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.pay}"></div>
+                <div style="color:grey;font-size: 1.2em;" id="index_uitext" th:text="'Bezahlungsart '"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.tourName}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getTourName()}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div th:if="${bookingView.getStatus()}=='OPEN'">
+                    <form class="ui reply form" role="form"
+                          th:action="@{/management/bookingManager/makePaid/{id}(id=${bookingView.getBookingId()})}"
+                          method="post">
+                        <button class="ui button" th:style="'background-color: green;float:left;'" th:type="submit"
+
+                                th:text="#{bookingManager.makePaid}"></button>
+                    </form>
+
+                    <form th:action="@{/management/bookingManager/cancel/{id}(id=${bookingView.getBookingId()})}"
+                          method="post">
+                        <button class="ui button" th:style="'background-color: red;float:right;'"
+                                th:type="submit"
+                                th:text="#{bookingManager.cancel}"></button>
+                    </form>
+                </div>
+                <div th:if="${bookingView.getStatus()}=='PAID'">
+                    <form class="ui reply form" role="form">
+                        <button class="ui button disabled" th:style="'background-color: gray;float:left;'"
+                                th:text="#{bookingManager.makePaid}"></button>
+                    </form>
+
+                    <form th:action="@{/management/bookingManager/cancel/{id}(id=${bookingView.getBookingId()})}"
+                          method="post">
+                        <button
+                                class="ui button" th:style="'background-color: red;float:right;'"
+                                th:type="submit"
+                                th:text="#{bookingManager.cancel}" ></button>
+                    </form>
+                </div>
+                <div th:if="${bookingView.getStatus()}=='COMPLETED'">
+                    <form class="ui reply form" role="form">
+                        <button class="ui button disabled" th:style="'background-color: gray;float:left;'"
+                                th:text="#{bookingManager.makePaid}"></button>
+                    </form>
+
+                    <form>
+                        <button class="ui button disabled" th:style="'background-color: gray;float:right;'"
+                                th:text="#{bookingManager.cancel}"></button>
+                    </form>
+                </div>
+                <div id="bookingspacer"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+
+</html>

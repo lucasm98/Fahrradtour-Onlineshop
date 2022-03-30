@@ -1,0 +1,26 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2019/20
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von: Lucas**
+
+**Gruppe: 40**
+
+== Was habe ich gelernt?
+Ich habe gelernt wie ich das Spring und SalesPoint Framework verwende. Zusätzlich hat sich auch mein Umgang mit Github verbessert und ich habe jetzt ein besseres Bild von Software-Entwicklung im Team.
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+Gute Planung und Leitung kann viel Arbeit ersparen. Selbständiges und engagiertes arbeiten ist Wichtig und sollte von Allen verfolgt werden. Wenn man ein Problem hat, und nach 1-2 Stunden immer noch am selben Stand ist, frag dein Team.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+Die Einarbeitungszeit ist von der Qualität der Dokumentation abhängig. Die Dokus von SalesPoint und Spring könnten noch verbessert werden. Ich habe mir viel an den Beispielprojekten abgeschaut.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+keine
+
+== Feedback für den Tutor
+Da unsere Tutor und wir das zum ersten mal gemacht haben, war das Feedback über unsere Implementation und Nutzung der Framworks eher bescheiden. Bzw. haben wir wenig Hinweise auf bessere oder andere Möglichkeiten bekommen. Aber sonst war ich mit unserem Tutor zufrieden.
+
+== Sonstiges und Anmerkungen
+Die Noten für die Prüfung sollten bis zum Semesterstart da sein.

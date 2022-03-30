@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<nav th:fragment="navigation" >
+    <div class="ui menu" id = "navigationbar" style="background-color:white;border-bottom: 2px solid #011006;border-top: 2px solid #0d8c39;margin-bottom:20px;">
+        <a class="item" href="tourCatalog.html" th:href="@{/tours}"
+           th:text="#{navigation.tourCatalog}">Login</a>
+        <a class="item" href="howto.html" th:href="@{/howto}" th:text="#{navigation.howto}">Login</a>
+        <a class="item" href="bookingList.html" th:href="@{/myBooking}" sec:authorize="hasRole('CUSTOMER')"
+           th:text="#{navigation.myBooking}">Meine Buchungen</a>
+        <a class="item" href="purchaseList.html" th:href="@{/myPurchases}" sec:authorize="hasRole('CUSTOMER')"
+           th:text="#{navigation.myPurchases}">Meine Käufe</a>
+        <a class="item" href="account.html" th:href="@{/myAccount}" sec:authorize="hasRole('CUSTOMER')"
+           th:text="#{navigation.myAccount}">Mein Account</a>
+        <div class="dropdown">
+            <a class="item" sec:authorize="hasRole('BOSS')"
+                th:text="#{navigation.management}">Login</a>
+            <div class="dropdown-content" id="dropdowncontent">
+                <div class="item" style="float:left;">
+                    <a type="button" href="userManager.html" th:href="@{/management/userManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="users icon" style="float:left;"></i>
+                        <div th:text="#{management.userManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="materialManager.html" th:href="@{/management/materialManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="briefcase icon" style="float:left;"></i>
+                        <div th:text="#{management.materialManager}" style="float:left;">usee</div>
+                    </a>
+
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="tourManager.html" th:href="@{/management/concreteTourManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="tripadvisor icon" style="float:left;"></i>
+                        <div th:text="#{management.tourManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="purchaseManager.html" th:href="@{/purchaseManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="shopping cart icon" style="float:left;"></i>
+                        <div th:text="#{management.purchaseManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="insuranceCaseManager.html" th:href="@{/management/insuranceCaseManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="hospital icon" style="float:left;"></i>
+                        <div th:text="#{management.insuranceCaseManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="bookingManager.html" th:href="@{/management/bookingManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="book icon" style="float:left;"></i>
+                        <div th:text="#{management.bookingManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="bikeManager.html" th:href="@{/management/bikeManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="bicycle icon" style="float:left;"></i>
+                        <div th:text="#{management.bikeManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                        <a type="button" href="resupplyManager.html" th:href="@{/management/resupplyManager}"
+                       class="ui button" style="width: 180px;">
+                        <i class="archive icon" style="float:left;"></i>
+                        <div th:text="#{management.resupplyManager}" style="float:left;">usee</div>
+                    </a>
+                </div>
+                <div class="item" style="float:left;">
+                    <a type="button" href="materialRequest.html" th:href="@{/management/materialRequest}"
+                       class="ui button" style="width: 180px;">
+                        <i class="shipping fast icon" style="float:left;"></i>
+                        <div th:text="#{management.materialRequest}" style="float:left;">usee</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a class="item" href="cart.html" th:href="@{/cart}" sec:authorize="hasRole('CUSTOMER')"
+           th:text="#{navigation.cart}">Cart</a>
+        <a class="item" href="tourCoach.html" th:href="@{/tourCoach}" sec:authorize="hasRole('TOURGUIDE')"
+           th:text="#{navigation.tourCoach}">Login</a>
+        <div class="right menu">
+            <a class="item" href="login.html" th:href="@{/login}" sec:authorize="!isAuthenticated()"
+               th:text="#{navigation.login}">Login</a>
+            <a class="item" href="register.html" th:href="@{/register}" sec:authorize="!isAuthenticated()"
+               th:text="#{navigation.register}">Register</a>
+            <a class="item" th:href="@{/logout}" type="submit" sec:authorize="isAuthenticated()"
+               th:text="#{navigation.logout}">Login</a>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,31 @@
+= Protokoll Gruppe 40
+
+Treffen am 13.11.2019
+
+Ort:      Ort des Treffens +
+Beginn:   xx:xx Uhr +
+Ende:     xx:xx Uhr
+
+__Schriftführer: Marcel Körner
+
+*Nächstes Treffen:* +
+20.11.2019, 16:40 Uhr, Ort des nächsten Treffens
+
+__Teilnehmer:__
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+Tutor hat Anmekerungen bezüglich des Klassendiagrams und Konextdiagrams von der Analyse. Dabei soll das Kontextdiagram vereinfacht werden und im Klassendiagram die Multiplizitäten hinzugefügt werden.
+Tutor fragt nach dem Stand des Prototypen, notiert sich die Aufgabenverteilung.
+Besprochen wurde auch, dass ab sofort Julian und Marcel den Scrum Master machen, jedoch Marcel der offizielle Ansprechpartner für Ronny bleibt.
+
+Der Tutor hat uns angeregt ein UI zu suchen und dieses für das Projekt einheitlich einzusetzen.
+
+== Aktueller Stand
+Der Prototyp befindet sich in einem akzeptablen Zustand. Die Entwickler Dokumentation soll eine höhere Priorität erhalten.
+Dieses soll bis Sonntag fertig sein.

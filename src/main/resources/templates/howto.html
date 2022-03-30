@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{template.title}">Titel</title>
+</head>
+<body>
+    <div class="container">
+        <header th:replace="template :: header"></header>
+            <div class="ui three column grid">
+                <div class="column">
+                    <div class="ui card" style="width:100%;">
+                        <div class="content" style="text-align: center;">
+                            <div class="meta" style="font-size: 16px; color: black;">
+                                <i class="user icon" style="float: top; color: #0e9c3f;"></i>
+                                <b><span th:text="#{howto.firstheader}">First Header</span></b><br>
+                            </div>
+                            <span th:text="#{howto.firstcontent}">First Content</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui card" style="width:100%;">
+                        <div class="content" style="text-align: center;">
+                            <div class="meta" style="font-size: 16px; color: black;">
+                                <i class="book icon" style="float: top; color: #0e9c3f;"></i>
+                                <b><span th:text="#{howto.secondheader}">Second Header</span></b><br>
+                            </div>
+                            <span th:text="#{howto.secondcontent}">Second Content</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui card" style="width:100%;">
+                        <div class="content" style="text-align: center;">
+                            <div class="meta" style="font-size: 16px; color: black;">
+                                <i class="bicycle icon" style="float: top; color: #0e9c3f;"></i>
+                                <b><span th:text="#{howto.thirdheader}">Third Header</span></b><br>
+                            </div>
+                            <span th:text="#{howto.thirdcontent}">Third Content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

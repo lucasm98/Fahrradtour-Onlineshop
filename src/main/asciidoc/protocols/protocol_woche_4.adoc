@@ -1,0 +1,53 @@
+= Protokoll Gruppe 40
+
+Treffen am 06.11.2019
+
+Ort:      APB E005
+Beginn:   16:40 Uhr
+Ende:     17:20 Uhr
+
+__Schriftführer:__ Luise Balbier
+
+*Nächstes Treffen:* +
+13.11.2019, 16:40 Uhr, APB
+
+__Teilnehmer:__
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+Es gab Probleme mit dem globalen Branch "prototype", diese wurden jedoch am Anfang dieses Gruppentreffens geklärt.
+Aufteilung der Klassen für den Prototyp schon erfolgt.
+
+Bis Donnerstag 0 Uhr:
+	- Klassendiagramm für eigene Klassen (mit MagicDraw)
+	- Packages von SalesPoint anschauen und einbauen
+
+Bis Freitag:
+	- Kontexdiagramm ausbessern
+	- Stonierung seperat nicht nötig bei Top-Level-Architektur
+	- Kardinalitäten beim Klassendiagramm
+
+Bis Sonntag 8 Uhr: 
+	- Eigener Prototyp
+	- Zusatz Sequenzdiagramm
+
+Bis Sonntag 0 Uhr:
+	- Entwickler Dokumentation
+	- Abgabe Prototyp
+	
+Ansonsten:
+	- Git Flow anschauen
+	- Gemeinschaftliches Template fürs Layout
+	- Diagramme und Protokoll in Master Branch
+	- Dienstag 6. DS Lernraum APB E040
+	- Wer welches Feature macht muss noch beschlossen werden
+
+== Aktueller Stand
+Pflichtenheft Abgabe hat gut geklappt. 
+Wöchentliches Meeting mit der Gruppe wurde ausgemacht und diese Woche zum ersten Mal durchgeführt. Es wird immer am Dienstag 6. DS in der SLUB stattfinden.

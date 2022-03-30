@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{tourManager.create.title}">Create Tour</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/management/{id}/update(id=${tour.id})}" th:object="${form}">
+
+        <h3 class="ui dividing header" th:text="#{tourManager.create.tourData}">Tour Data</h3>
+
+        <!--div class="ui negative message" th:if="${fields.hasErrors('*')}">
+            <p>Einige Angaben sind nicht korrekt.</p>
+        </div-->
+        <div class="field">
+            <label th:text="#{tourManager.create.name}" for="name">Name</label>
+            <input id="name" name="name" type="text" th:if="${tour.name}" th:value="${tour.name}" th:maxlength="50" required="required"/>
+        </div>
+        <div class="field">
+            <label th:text="#{tourManager.create.description}" for="description" >Beschreibung</label>
+            <textarea id="description" name="description" th:text="${tour.descriptionText}" required="required"></textarea>
+        </div>
+        <div class="field">
+            <label th:text="#{tourManager.capacity}" for="capacity">Capacity</label>
+            <input id="capacity" name="capacity" type="number" min="1" max="500" step="1" value="1"th:value="${tour.capacity}" required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{tourManager.image}" for="image">Image</label>
+            <input id="image" name="image" type="text" th:value="${tour.image}" required="required"/><br/>
+        </div>
+        <button type="submit" class="ui button green" th:text="#{tourManager.edit.tour}">edit</button>
+    </form>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

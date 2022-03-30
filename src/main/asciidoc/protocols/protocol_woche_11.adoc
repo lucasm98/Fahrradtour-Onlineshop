@@ -1,0 +1,29 @@
+= Protokoll Gruppe 40
+
+Treffen am 08.01.2020
+
+Ort:      APB E009
+Beginn:   16:40 Uhr
+Ende:     17:15 Uhr
+
+__Schriftführer:__ Marwin Dörschel
+
+*Nächstes Treffen:* +
+15.01.2020, 16:40 Uhr, APB
+
+__Teilnehmer:__
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Julian Möller
+- Muhammad Ibrahim Rahman (krank, entschuldigt)
+- Luise Balbier (krank, entschuldigt)
+
+== Bemerkungen
+- Bugs aus Crosting Testing beheben
+- AUfgabe durch Kunden
+
+== Aktueller Stand
+- Entwicklung Endpräsentation
+- Bug Fixes

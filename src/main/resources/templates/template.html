@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+</head>
+
+<body>
+    <header th:fragment="header">
+        <div id="header">
+            <header>
+                <a href="/"><img class="logo" th:src="@{/resources/img/bike-logo.svg}"/></a>
+                <h1 th:text="#{template.title}">Bike Tours</h1>
+            </header>
+            <nav th:include="navigation :: navigation"></nav>
+        </div>
+    </header>
+
+    <footer th:fragment="footer">
+        <div class="ui segment footer" style="margin-top: 20px; margin-bottom: 15px;">
+            <div>
+                <p class="ftext"><span th:text="#{template.street}">Street</span>, <span th:text="#{template.city}">City</span></p>
+                <p class="ftext" th:text="#{template.telephone}">Telephone</p>
+                <p class="ftext" th:text="#{template.fax}">Fax</p>
+                <p class="ftext" th:text="#{template.email}">Mail</p>
+                <p class="ftext" th:text="#{template.copy}">Copy</p>
+                <a class="" th:text="#{template.impressum}" href="/impressum"></a>
+                <p class="ftext" th:text="#{template.bankAccountOwner}">Telephone</p>
+                <p class="ftext" th:text="#{template.iban}">Fax</p>
+                <p class="ftext" th:text="#{template.bic}">Mail</p>
+                <p class="ftext" th:text="'Verwendungszweck: Buchung ID'";></p>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

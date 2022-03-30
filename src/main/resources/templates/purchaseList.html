@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{bookingList.title}">Booking Manager</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+        <div th:if="${purchasesViews.isEmpty()}">
+            <div class="ui header" STYLE=" float: left;">
+                keine Käufe
+            </div>
+            </br>
+        </div>
+        <div class="ui header" th:if="${!purchasesViews.isEmpty()}">Käufe :</div>
+        <div th:if="!${purchasesViews.isEmpty()}">
+            <div class="gbtd" th:each="view : ${purchasesViews}">
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="'Status : '+${view.status}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="'Id : '+${view.purchaseId}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="'Benutzername : '+${view.userName}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="'Datum : '+${view.purchaseDate}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="'Räder :'"></div>
+                </br>
+                <table class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th th:text="#{cart.name}">Name</th>
+                        <th th:text="#{cart.type}">Type</th>
+                        <th th:text="#{cart.price}">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                    <tr th:each="bike: ${view.bikes}">
+                        <td th:text="${bike.name}"></td>
+                        <td th:text="${bike.bikeType}"></td>
+                        <td id="numTable" th:text="${bike.price}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="'Bezahlungsart : '+${view.pay}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="${view.points}+' Punkte genutzt , '+' Gesamt : '+${view.price}+' EUR'"></div>
+                </br>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+
+</html>

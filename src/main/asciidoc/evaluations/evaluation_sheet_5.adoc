@@ -1,0 +1,30 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2019/20
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von:**
+
+**Gruppe:**
+
+== Was habe ich gelernt?
+Eine ausführliche Analyse und ein granuläres Design, sowie eine gekapselte Implementierung sind die Grundlage für eine einfache Erweiterbarkeit und Austauschbarkeit von Modulen, Klassen und Funktionen.
+Es muss von jedem Mitglied dessen Stärken herausgefunden werden, um diese optimal einzusetzen. Kommunikation und eigenständige Mitarbeit sollten dabei gefördert werden. Dabei ist zu beachten, dass die Hormonie sich im Team auf einem hohen Level befindet. In Meetings müssen Probleme sachlich erläutert und geklärt werden.
+
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+Jedes Mitglied sollte gefördert und motiviert werden eine gute Leistung hinzulegen. Wenn alle an einem Strang ziehen, hat dich einen sehr positiven Einfluss auf das Projekt. Freundschaften können dabei zu Problemen führen, da somit eine Gleichverteilung der Einschätzung ausbleiben kann.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+Besonders Spring und SalesPoint sind die Grundlage für eine schnelle Implementierung, da sie viele Funktionen vorweisen und natürlich getestet sind. Man soll das Rad ja nicht neu erfinden. Eigen implementierter Code sollte durch eine saubere Schnittstellenanpassung mit Bibliotheken und Frameworks verbunden werden. Sobald jedoch die komplexität des Projekts zunimmt, ist zu überlegen neue Bibliotheken und Frameworks hinzuzufügen.
+
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+Leute sollten nicht zufällig verteilt werden. Mit ihren Noten sollte ein Durchschnitt berechnet werden und mit diesem sollte die Gruppenverteilung geschehen.
+Somit kann garantiert werden, dass im Team Studenten mit viel Erfahrung und mehr Fähigkeiten, Studenten mit weniger Erfahrung und Fähigkeiten aushelfen und ihnen an der einen oder anderen Stelle gewisse Aspekte der Programmierung erklären können.
+
+== Feedback für den Tutor
+Der Tutor hat uns gut beraten und stand bei Fragen bereit. Erinnerungen seinerseits kamen immer pünktlich und sein Feedback war sehr kompetent. Wir hätten uns an der einen oder anderen Stelle über ein detailierteres Feedback bezügich des Projektes gefreut, jedoch hätten wir auch detailierter Fragen können :)
+
+== Sonstiges und Anmerkungen
+Der Lernraum bietet allen Gruppen die Möglichkeit sich bei Problemen helfen zu lassen. Uns wurde immer sachlich und kompetent geholfen.

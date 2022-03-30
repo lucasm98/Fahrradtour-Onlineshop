@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{tourManager.tours}">Tours</title>
+</head>
+<body>
+        <header th:replace="template :: header"></header>
+
+        <div class="ui segment">
+        <div class="ui center container" th:remove="all-but-first">
+            <div class="ui link cards">
+
+                <div class="ui card" th:each="tour : ${catalog}"  style="width:99%;background-color:white;border-left: 2px solid #011006;border-right: 2px solid #0d8c39;">
+
+                        <div class="ui grid">
+                            <div class="three column row">
+                                <div class="column">
+                                    <div class="ui fluid image">
+                                        <a th:href="@{/tour/{id}(id=${tour.id})}">
+                                            <img th:src="@{/resources/img/{name}.jpg(name=${tour.getTour().getImage()})}"
+                                            src="../static/resources/img/foTo.jpg">
+                                        </a>
+                                    </div>
+                               </div>
+                                <div class="column">
+                                    <div class="content" style="margin-top:10px;">
+                                        <a class="ui header" th:href="@{/tour/{id}(id=${tour.id})}" th:text="${tour.name}" style="margin-top:10px;">Tour Header</a>
+                                        </br>
+                                        <div class="meta" th:text="${tour.getShortDescriptionText()}" style="padding:0.2em;"></div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="content" style="padding:1.5em;">
+                                        <span class="header" th:text="#{tourManager.start}">Start</span>
+                                        <span class="ui fade right" th:text="${tour.getGermanStart()}">Start</span><br>
+                                        <span class="header" th:text="#{tourManager.end}">End</span>
+                                        <span class="ui fade right" th:text="${tour.getGermanEnd()}">End</span>
+                                        <div class="extra" style="margin-top:20px;">
+                                            <div class="ui tag labels" th:switch="${tour.priceCategory}" style="float:left;">
+                                                <p th:case="LUXURY" class="ui red big label" th:text="${tour.priceCategory+' : '+tour.price}">
+                                                    LUXURY
+                                                </p>
+                                                <p th:case="'ECONOMY'" class="ui yellow medium label" th:text="${tour.priceCategory+' : '+tour.price}}">
+                                                    ECONOMY
+                                                </p>
+                                                <p th:case="*" class="ui medium label" th:text="${tour.priceCategory+' : '+tour.price}" style="margin-left:0em;">
+                                                    Standard
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="meta" style="margin-top:17px;float:right;">
+
+                                            <a class="ui green image label" style="text-align:center;" th:if="${tour.getFree()} >= 10" th:href="@{/tour/{id}(id=${tour.id})}">
+                                                <i class="angle double up icon"></i>
+                                                Free Seats :
+                                                <div class="detail" th:text="${tour.getFree()}">Friend</div>
+                                            </a>
+                                            <a class="ui orange image label" style="text-align:center;" th:if="${tour.getFree()} < 10 and ${tour.getFree()} > 0" th:href="@{/tour/{id}(id=${tour.id})}">
+                                                <i  class="angle up icon"></i>
+                                                Free Seats :
+                                                <div class="detail" th:text="${tour.getFree()}">Friend</div>
+                                            </a>
+                                            <a class="ui red image label" style="text-align:center;" th:if="${tour.getFree()} == 0" th:href="@{/tour/{id}(id=${tour.id})}">
+                                                <i  class="close icon"></i>
+                                                No Seats left
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                </div>
+            </div>
+            <div class="ui section divider"></div>
+        </div>
+
+    </div>
+        <footer th:replace="template :: footer"></footer>
+</body>
+</html>

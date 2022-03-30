@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+    <title th:text="#{resupplyManager.details.title}">Resupply Station Details</title>
+</head>
+<body>
+<header th:replace="template :: header"></header>
+
+<table class="ui celled table">
+    <thead>
+    <tr><th th:text="#{resupplyManager.details.id}">resupply Id</th>
+        <th th:text="#{resupplyManager.details.name}">Name</th>
+        <th th:text="#{resupplyManager.details.address}">Address</th>
+        <th th:text="#{resupplyManager.state}">State</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+        <td th:text="${id}">resupply Id</td>
+        <td th:text="${name}">Name</td>
+        <td th:text="${address}">Address</td>
+        <td th:text="${isEnabled} ? 'Active' : 'Inactive'" th:class="${isEnabled} ? positive : negative"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="ui link cards" >
+    <div class="card" th:each="material : ${materialCatalog}" >
+
+        <div class="content">
+            <a class="header" th:text="${material.name}" th:href="@{/management/material/{id}(id=${material.id})}">Name</a>
+        </div>
+        <div class="content">
+            <div class="description" th:text="${'Type    : '+material.type}">Type</div>
+            <div class="description"  th:text="${'Station : '+{material.loc}}" >Description</div>
+            <div class="text"  th:text="${'Quantity : '+{material.quantity}}" >Description</div>
+        </div>
+        <div class="content">
+            <div class="description" th:text="${{material.description}}" >Description</div>
+        </div>
+        </a>
+        <div class="content">
+            <form method="post" role="form" class="ui form" id="form" th:action="@{/saveRequest}">
+                <input type="hidden" name="pid" value="0" th:value="${material.id}"/>
+                <input type="number" min="1" max="100" step="1" name="quantity" required id="leftfloated50">
+                <button type="submit" class="ui button" th:text="'Bestellen'" id="index_uitext">Registrieren</button>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

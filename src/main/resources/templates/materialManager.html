@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+
+        <nav th:include="materialNavigation :: materialNavigation"></nav>
+    </div>
+</header>
+
+<div class="gbtd" >
+    <div class="ui link cards" >
+        <div class="card" th:each="material : ${catalog}" >
+            <div class="noMargin bglr">
+                <div class="one column grid">
+
+
+                    <div class="column">
+                        <a class="ui header" th:text="${material.name}" th:href="@{/management/material/{id}(id=${material.id})}">Name</a>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="column">
+                            <div class="ui description" th:text="${{material.description}}" >Description</div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="column">
+                        <a th:href="@{/management/material/{id}(id=${material.id})}">
+                            <div class="ui animated button">
+                                <div class="visible content">Open</div>
+                                <div class="hidden content">
+                                    <i class="right arrow icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <a th:href="@{/management/materialedit/{id}(id=${material.id})}">
+                            <div class="ui animated button">
+                                <div class="visible content">Edit</div>
+                                <div class="hidden content">
+                                    <i class="ui cogs icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <a th:href="@{/management/deleteMaterial/{id}(id=${material.id})}">
+                            <div class="ui animated button">
+                                <div class="visible content">Delete</div>
+                                <div class="hidden content">
+                                    <i class="trash alternate icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

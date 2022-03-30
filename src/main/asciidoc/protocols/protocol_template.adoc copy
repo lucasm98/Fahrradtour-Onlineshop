@@ -1,0 +1,52 @@
+= Protokoll Gruppe XX
+
+Treffen am 11.12.2019
+
+Ort:      Ort des Treffens +
+Beginn:   16:30 Uhr +
+Ende:     18:00 Uhr
+
+__Schriftführer: Marcel Körner
+
+*Nächstes Treffen:* +
+18.11.2019, 16:40 Uhr, Ort des nächsten Treffens
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+Es sollten aktuelle Probleme in der Gruppe mit dem Tutor besprochen werden, eine vorläufige intere Klärung fand statt. Die Rücksprache mit dem Tutor erfolgt nächste Woche.
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+Folgende muss Kriterin wurden noch nicht implementiert:
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|#10    |Übersicht aller Items für eine expliziete Station       |noch nicht implementiert      |Die Resupply Standardklassen müssen erst implementiert werden
+|===
+|#11    |Warenkorb + Bezahlung       |noch nicht implementiert      |Bikes in den Fahrradkorb packen und dort bezahlen
+|===
+|#12    |User Einkäufe anzeigen       |noch nicht implementiert      |
+|===
+|#13    |Kauf Button für Bikes bei Übersicht Bookings vom User       |noch nicht implementiert      |
+|===
+|#14    |Referenz von Resupply Stations in Tour      |noch nicht implementiert      |Jeder Tour hat bestimmte Resupply Stationen gespeichert
+|===
+
+
+== Aktueller Stand
+Aktuell bedarf es der UI noch sehr an Design. Luise kümmert sich ab jetzt vollständig um dieses.
+
+== Planung des nächsten Sprints
+Fertigstellung aller Muss Kriterien und einheitliches Design

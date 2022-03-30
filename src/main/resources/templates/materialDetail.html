@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+
+        <nav th:include="materialNavigation :: materialNavigation"></nav>
+    </div>
+</header>
+
+<div class="gbtd">
+    <div class="ui items">
+        <div class="item">
+            <div class="content">
+                <a class="header" th:text="${prim.name}">material Name</a>
+
+                <a th:href="@{/management/deleteMaterial/{id}(id=${material.id})}" style="float:right;">
+                    <div class="ui animated button" style="padding:5px;">
+                        <div class="visible content">Delete</div>
+                        <div class="hidden content">
+                            <i class="trash alternate icon"></i>
+                        </div>
+                    </div>
+                </a>
+                <a th:href="@{/management/materialedit/{id}(id=${material.id})}" style="float:right;">
+                    <div class="ui animated button" style="padding:5px;">
+                        <div class="visible content">Edit</div>
+                        <div class="hidden content">
+                            <i class="ui cogs icon"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="ui divider"></div>
+                <div class="meta">
+                    <span th:text="${prim.description}">Description</span>
+                </div>
+                <div class="ui divider"></div>
+                <div class="extra">
+                    <p th:text="${prim.type}" class="ui">Type</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="gbtd">
+    <div class="ui header">Supplystations:</div>
+    <table class="ui celled table" style="border-left: 2px solid #011006; border-right: 2px solid #0d8c39;">
+        <thead>
+        <tr>
+            <th th:text="#{materialDetail.locid}">locationID</th>
+            <th th:text="#{materialDetail.loc}">location</th>
+            <th th:text="#{materialDetail.quantity}">Quantity</th>
+            <th th:text="#{materialDetail.id}">MaterialID</th>
+        </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+        <tr th:each=" material : ${catalog}" th:class="${!resupplyManager.isActive(material.locid)} ? disabled">
+            <td  th:for="${material.locid}" th:text="${material.locid}">lel        </td>
+            <td  th:for="${material.loc}">
+                <a th:text="${material.loc}" class="ui header" th:href="@{/management/resupplyStation/{id}(id=${material.locid})}">Location</a>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <th style="border-left:0;">
+                            <a th:href="@{/management/decQuantity/{id} (id=${material.id+'/'+prim.id})}">
+                                <div class="ui button">
+                                    <i class="minus icon"></i>
+                                </div>
+                            </a>
+                        </th>
+                        <th style="padding:5px 20px 5px 15px;border-left:0;">
+
+                            <div class="text" th:text="${material.quantity}">Anzahl</div>
+
+                        </th>
+                        <th style="border-left:0;">
+                            <a th:href="@{/management/addQuantity/{id} (id=${material.id+'/'+prim.id})}">
+                                <div class="ui button">
+                                    <i class="plus icon"></i>
+                                </div>
+                            </a>
+                        </th>
+
+                </table>
+            </td>
+            <td th:text="${material.id}">yyyy/mm/dd</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

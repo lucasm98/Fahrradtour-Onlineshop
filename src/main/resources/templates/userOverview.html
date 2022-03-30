@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+    <div class="ui segment" th:object="${user}">
+        <form role="form" class="ui form">
+            <div class="two fields">
+                <div class="field">
+                    <label th:text="#{account.name}"></label>
+                    <div id="userOverview_data" th:text="${user.getUserAccount().getUsername()}"></div>
+
+                    <label th:text="#{account.lastName}"></label>
+                    <div id="userOverview_data" th:text="${user.getUserAccount().getLastname()}"></div>
+
+                    <label th:text="#{account.firstName}"></label>
+                    <div id="userOverview_data" th:text="${user.getUserAccount().getFirstname()}"></div>
+
+                    <label th:text="#{account.email}"></label>
+                    <div id="userOverview_data" th:text="${user.getUserAccount().getEmail()}"></div>
+                </div>
+                <div class="field">
+                    <label th:text="#{account.street}"></label>
+                    <div id="userOverview_data" th:text="${user.getAddress().getStreet()}"></div>
+
+                    <label th:text="#{account.number}"></label>
+                    <div id="userOverview_data" th:text="${user.getAddress().getNumber()}"></div>
+
+                    <label th:text="#{account.cityCode}"></label>
+                    <div id="userOverview_data" th:text="${user.getAddress().getCityCode()}"></div>
+
+                    <label th:text="#{account.city}"></label>
+                    <div id="userOverview_data" th:text="${user.getAddress().getCity()}"></div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

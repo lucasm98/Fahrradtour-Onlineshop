@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{bookingList.title}">Booking Manager</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+        <div th:if="${bookingViews.isEmpty()}">
+            <div class="ui header" STYLE=" float: left;">
+                Keine Buchungen
+            </div>
+            </br>
+        </div>
+        <div class="ui header" th:if="${!bookingViews.isEmpty()}">Buchungen :</div>
+        <div th:if="!${bookingViews.isEmpty()}">
+            <div class="gbtd" th:each="bookingView : ${bookingViews}">
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.tourName}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getTourName()}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getQuantity()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.quantity}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.start}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getGermanStart()}"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getGermanEnd()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.end}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;" id="index_uitext" th:text="' : '+${bookingView.getStatus()}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitext" th:text="#{bookingList.status}"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="#{bookingList.bookingId}"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.getBookingId()}"></div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="font-size: 1.2em;color:grey;" id="index_uitextleft" th:text="'Gesamt '"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.price}+' EUR'"></div>
+                <div th:switch="${bookingView.getStatus()}" id="index_uitext">
+                    <form th:case="'OPEN'" class="ui reply form" role="form" th:action="@{/cancelBooking/{id}(id=${bookingView.getBookingId()})}" method="post">
+                        <button class="ui right floated button" style="padding-top:5px;padding-bottom:5px;" th:type="submit" th:text="#{bookingList.cancel}">Cancel Tour
+                            <i class="right trash icon"></i>
+                        </button>
+                    </form>
+                    <form th:case="'PAID'" class="ui reply form" role="form" th:action="@{/cancelBooking/{id}(id=${bookingView.getBookingId()})}" method="post">
+                        <button class="ui right floated button" style="padding-top:5px;padding-bottom:5px;" th:type="submit" th:text="#{bookingList.cancel}">Cancel Tour
+                            <i class="right trash icon"></i>
+                        </button>
+                    </form>
+                    <div th:case="*">
+                        <button class="ui right floated grey button" style="padding-top:5px;padding-bottom:5px;" th:text="#{bookingList.cancel}">Cancel Tour
+                            <i class="right trash icon"></i>
+                        </button>
+                    </div>
+                </div>
+                </br>
+                <div class="ui divider"></div>
+                <div style="color:grey;font-size: 1.2em;" id="index_uitextleft" th:text="'Bezahlungsart '"></div>
+                <div style="font-size: 1.2em;" id="index_uitextleft" th:text="' : '+${bookingView.pay}"></div>
+                <form id="index_uitext" th:if="${bookingView.isBuyable() and enoughCredits}" class="ui reply form" role="form" th:action="@{/checkBike/{id}(id=${bookingView.getBookingId()})}" method="post">
+                    <a class="ui right floated button" STYLE="padding-top:5px;padding-bottom:5px;" th:text="#{bookingList.buyBike.buy}" th:href="@{/checkBike/{id}(id=${bookingView.getBookingId()})}">Buy bike(s)
+
+                        <i class="right chevron icon"></i>
+                    </a>
+                </form>
+                <form id="index_uitext" th:unless="${bookingView.isBuyable() and enoughCredits}" class="ui reply form" >
+                    <a class="ui right floated button" th:style="'background-color : gray;padding-top:5px;padding-bottom:5px;'" th:text="#{bookingList.buyBike.expired}">Buy bike(s)
+
+                        <i class="right chevron icon"></i>
+                    </a>
+                </form>
+                </br>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+
+</html>

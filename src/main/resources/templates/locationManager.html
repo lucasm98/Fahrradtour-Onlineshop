@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+
+<div class="ui menu">
+    <a class="item">
+        <div class="ui action input">
+            <form class="ui form" method="post" th:action="@{/materialSearch}">
+                <table>
+                    <tr>
+                        <th>
+                            <input type="text" id="search" name="search" placeholder="Search..." th:value="${search}"  data-cip-id="cIPJQ342845657">
+                        </th>
+                        <th>
+                            <button class="ui button" type="submit">Search</button>
+                        </th>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </a>
+    <a class="item"   th:href="@{/materialManager}"><i class="coffee icon"></i><div th:text="#{materialManager.all}">Alles</div></a>
+    <a class="item" th:href="@{/material/ersatz}"><i class="briefcase icon"></i><div th:text="#{materialManager.parts}">Ersatzteile</div></a>
+    <a class="item" th:href="@{/material/versorgung}"><i class="coffee icon"></i><div th:text="#{materialManager.supply}">Versorgung</div></a>
+    <a class="item" th:href="@{/addMaterial}"><i class="add to cart icon"></i><div th:text="#{materialManager.add}">Inventar erstellen</div></a>
+</div>
+
+<div class="ui link cards" >
+    <div class="card" th:each="material : ${catalog}" >
+
+        <div class="content">
+            <a class="header" th:text="${material.name}" th:href="@{/material/{id}(id=${material.id})}">Name</a>
+        </div>
+        <div class="content">
+            <div class="description" th:text="${'Type    : '+material.type}">Type</div>
+            <div class="description"  th:text="${'Station : '+{material.loc}}" >Description</div>
+            <div class="text"  th:text="${'Quantity : '+{material.quantity}}" >Description</div>
+        </div>
+        <div class="content">
+            <div class="description" th:text="${{material.description}}" >Description</div>
+        </div>
+        </a>
+        <div class="content">
+            <a th:href="@{/material/{id}(id=${material.id})}">
+                <div class="ui animated button">
+                    <div class="visible content">Open</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

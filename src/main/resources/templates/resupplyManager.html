@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+    <title th:text="#{resupplyManager.title}">Resupply Manager</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <a class="ui button" th:href="@{/management/resupplyManager/resupplyForm}" th:text="#{resupplyManager.create.new}">New</a><br>
+    <div class=" ui segment">
+        <table class="ui selectable celled table">
+            <thead>
+            <tr><th th:text="#{resupplyManager.details.id}">resupply Id</th>
+                <th th:text="#{resupplyManager.details.name}">Name</th>
+                <th th:text="#{resupplyManager.details.address}">Address</th>
+                <th th:text="#{resupplyManager.inventory}">Inventory</th>
+                <th th:text="#{resupplyManager.edit}">Edit Details</th>
+                <th th:text="#{resupplyManager.state.toggle}">State</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="resupply : ${catalog}" th:class="${!resupply.getEnabled()} ? negative">
+                <td th:text="${resupply.getId()}">resupply Id</td>
+                <td th:text="${resupply.name}">Name</td>
+                <td th:text="${resupply.address}">Address</td>
+                <td class="selectable">
+                    <a th:text="#{resupplyManager.viewInventory}" th:href="@{/management/resupplyStation/{id}(id=${resupply.getId()})}" >View Inventory</a>
+                </td>
+                <td class="selectable">
+                    <a th:text="#{resupplyManager.edit.resupply}" th:href="@{/management/resupplyManager/editResupply/{id}(id=${resupply.getId()})}" >Edit</a>
+                </td>
+                <td>
+                    <form method="post" th:object="${toggleState}" th:action="@{/management/resupplyManager/toggleState/{id}(id=${resupply.id})}">
+                        <div>
+                            <button  name="toggleState" type="submit" th:class="${resupply.getEnabled()} ? 'ui button' : 'ui red button'" th:text="${resupply.getEnabled()} ? #{resupplyManager.details.state.active} : #{resupplyManager.details.state.inactive}">State</button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

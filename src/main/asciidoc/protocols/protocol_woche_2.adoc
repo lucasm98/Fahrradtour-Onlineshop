@@ -1,0 +1,47 @@
+= Protokoll Gruppe 40
+
+Treffen am 23.10.2019
+
+Ort:      APB Foyer +
+Beginn:   16:40 Uhr +
+Ende:     17:30 Uhr
+
+__Schriftführer:__ Julian Möller
+
+*Nächstes Treffen:* +
+30.10.2019, 16:40 Uhr, Foyer des APB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+
+== Bemerkungen
+Bis Freitag sollen die ersten UML-Diagramme angefertigt und in das Github Repository
+gepusht werden. Außerdem muss jeder eine Aufgabe für den Videoshop auswählen
+und anfangen dieses zu bearbeiten. Die fertige Aufgabe wird dann in einen eigenen
+Branch gepusht.
+
+*geklärte Fragen:*
+
+* Kauf des Fahrrads mittels Treuepunkte
+* Kurse sind durch eine bestimmte Größe begrenzt
+* Reiseleiter haben Zugriff auf die von ihenen benötigte Informationen
+ über eine Unterseite
+* Der Kunde hat die Chance neue Touren anzulegen
+* verschiedene Anreise Termine und Möglichkeiten werden über die Seite angegeben
+* Ersatzteilanfrage und Versicherungsfälle regelt der Reiseleiter über das Notebook
+* An jeder Versorgungsstation soll eine Inventarliste der verfügbaren Ersatzteile
+ vorliegen
+
+
+
+== Aktueller Stand
+Anmerkungen und Kritik zum aktuellen Stand der Software, den Diagrammen und den
+Dokumenten.
+Erste Vorlage für ein Klassendiagramm angefertigt. Guestbook Aufgabe angefertigt
+und abgegeben.

@@ -1,0 +1,29 @@
+= Protokoll Gruppe 40
+
+Treffen am 18.12.2019
+
+Ort:      APB E005
+Beginn:   16:45 Uhr
+Ende:     17:00 Uhr
+
+__Schriftführer:__ Marwin Dörschel 
+
+*Nächstes Treffen:* +
+08.01.2020, 16:40 Uhr, APB
+
+__Teilnehmer:__
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+- Cross Testing Beginn
+- Abgabe Cross Testing Ergebnisse 
+
+== Aktueller Stand
+- Muss-Kriterien erfüllt
+- Cross Testing starten

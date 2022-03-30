@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{register.title}">Registrierung</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+
+    <div class="ui segment">
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/register}" th:object="${registration}">
+
+        <div class="field">
+            <label th:text="#{register.userName}" for="userName">Name</label>
+            <input id="userName" name="name" th:field="*{userName}" th:errorclass="fieldError" type="text" required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.firstName}" for="firstName">Name</label>
+            <input id="firstName" name="firstName" th:field="*{firstName}" th:errorclass="fieldError" type="text" required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.lastName}" for="lastName">Name</label>
+            <input id="lastName" name="lastName" th:field="*{lastName}" th:errorclass="fieldError" type="text" required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.email}" for="email">Name</label>
+            <input id="email" name="email" th:field="*{email}" th:errorclass="fieldError" type="email" required="required"/><br/>
+        </div>
+
+        <div class="field">
+            <label th:text="#{register.password}" for="password">Passwort</label>
+            <input id="password" name="password" th:field="*{password}" th:errorclass="fieldError" type="password"
+                   required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.street}" for="street">Straße</label>
+            <input id="street" name="street" th:field="*{street}" th:errorclass="fieldError" type="text"
+                   required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.number}" for="street">Straße</label>
+            <input id="number" name="number" th:field="*{number}" th:errorclass="fieldError" type="number" required>
+        </div>
+        <div class="field">
+            <label th:text="#{register.cityCode}" for="street">Straße</label>
+            <input id="cityCode" name="street" th:field="*{cityCode}" th:errorclass="fieldError" type="number"
+                   required="required"/><br/>
+        </div>
+        <div class="field">
+            <label th:text="#{register.city}" for="street">Straße</label>
+            <input id="city" name="street" th:field="*{city}" th:errorclass="fieldError" type="text"
+                   required="required"/><br/>
+        </div>
+        <button type="submit" class="ui button" th:text="#{register.submit}">Registrieren</button>
+    </form>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

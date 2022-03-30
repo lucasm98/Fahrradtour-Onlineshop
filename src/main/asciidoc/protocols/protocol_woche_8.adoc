@@ -1,0 +1,45 @@
+= Protokoll Gruppe 40
+
+Treffen am 04.12.2019
+
+Ort:      APB E005
+Beginn:   16:40 Uhr
+Ende:     17:40 Uhr
+
+__Schriftführer:__ Julian Möller
+
+*Nächstes Treffen:* +
+11.12.2019, 16:40 Uhr, APB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Marcel Körner (Scrum-Master)
+- Marwin Dörschel
+- Lucas Martin
+- Muhammad Ibrahim Rahman
+- Julian Möller
+- Luise Balbier
+
+== Bemerkungen
+
+* Bis nächste Woche Mittwoch muss von jedem Teilnehmer sein Package und die dazu gehörigen
+Fumktionen lauffähig sein und die Muss-Kriterien erfüllen.
+
+* Das Design der Website muss überarbeitet werden und auf allen Seiten ähnlich repräsentiert werden.
+
+* JUnit-Tests weiter ausarbeitetn bisherige Testabdeckung liegt bei 38% Mindestanforderung
+liegt bei 40%.
+
+* Rücksprache zur Präsentation mit Tutor und Gasthörer gehalten und Verbesserungsvorschläge vermerkt.
+
+== Aktueller Stand
+
+Die meisten Packages sind lauffähig. Design-Überarbeitung ist in Planung.
+
+== Planung des nächsten Sprints
+
+* Jeder Teilnehmer arbeitet weiter an seinem Package und dessen Funktionalitäten.
+* Gemeinsames Design muss ausgearbeitet werden und umgesetzt.
+* Weiter JUnit-Tests müssen implementiert werden.
+

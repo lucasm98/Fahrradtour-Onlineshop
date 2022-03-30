@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <title th:text="#{insuranceCaseForm.title}">Registrierung</title>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class="ui segment">
+    <form method="post" role="form" class="ui form" id="form" th:action="@{/insuranceCaseForm/{id}(id=${concreteTour.id})}" th:object="${InsuranceCaseForm}">
+        <div class="field">
+            <label th:text="#{insuranceCaseManager.create.insurancecasetour}">Tour</label>
+            <p th:text="${concreteTour.getName()}">Tourname</p>
+        </div>
+        <div class="field">
+            <label th:text="#{insuranceCaseManager.create.startdate}">Start Date</label>
+            <p th:text="${concreteTour.getStart()}"></p>
+        </div>
+        <div class="field">
+            <label th:text="#{insuranceCaseManager.create.enddate}">End Date</label>
+            <p th:text="${concreteTour.getEnd()}"></p>
+        </div>
+        <div class="field">
+            <table class="ui celled table">
+
+                <tbody >
+                <select class="form-control" name="userName" id="userName" required>
+                    <option th:each="user : ${users}" th:value="${user.getUsername()}"
+                            th:text="${user.getUsername()} + ' (' + ${user.getFirstname()} + ' ' + ${user.getLastname()} + ')'">
+                </select>
+                </tbody>
+            </table>
+        </div>
+        <div class="field">
+            <label th:text="#{insuranceCaseManager.create.description}" for="description">Text</label>
+            <textarea id="description" name="description" required="required"></textarea>
+        </div>
+        <button type="submit" class="ui button green" th:text="#{insuranceCaseManager.create.insuranceCase}">Create New InsuranceCase</button>
+    </form>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

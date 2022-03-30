@@ -1,0 +1,24 @@
+Protokoll Gruppe 40
+
+Treffen am 17.10.2019
+
+Ort: APB E006
+Beginn: 15:00 Uhr
+Ende 15:15 Uhr
+
+Schriftführer: Marwin Dörschel
+
+Nächstes Treffen:
+23.10.2019, 16:40 Uhr, APB
+
+Teilnehmer:
+- Lucas
+- Julian
+- Muhammad
+- Luise
+
+Bemerkungen und Termine/nächste Schritte:
+- bis Miitwochabend den 23.10.19 soll die Guestbook Aufgabe erweitert und per zip mit unserer Gruppen Nummer eine E-Mail an unseren Tutor geschickt werden 
+- Durchsprache des Punkt (1) auf Seite 35 -> Rollenfestegung 
+- bis zum nächsten Treffen am 23.10.19 die Aufgabe durchlesen und zusammen ein erstes Analyseklassendiagramm und GUI Entwurf erstellen 
+- generelle Abgabe für Entwürfe etc. erfolgt durch den Scrummaster an den Tutor Freitags 20:00 Uhr

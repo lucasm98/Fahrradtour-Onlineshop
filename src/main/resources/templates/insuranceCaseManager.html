@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+    <div class=" ui segment">
+        <div class="ui header" th:text="#{management.insuranceCaseManager}">Insurance</div>
+        <div class="gbtd" th:each="case : ${insuranceCases}">
+            <div class="index_uitextleft greytxt" th:text="#{insuranceCaseManager.id}"></div>
+            <div class="index_uitextleft blacktxt" th:text="' : '+${case.getId()}"></div>
+            <div class="index_uitext blacktxt" th:text="' : '+${case.getDate()}"></div>
+            <div class="index_uitext greytxt" th:text="#{insuranceCaseManager.date}"></div>
+            <br>
+            <div class="ui divider"></div>
+            <div class="index_uitextleft greytxt" th:text="#{insuranceCaseManager.create.insurancecasetour}"></div>
+            <div class="index_uitextleft blacktxt" th:text="' : '+${case.getTour().getName()}"></div>
+            <div class="index_uitext blacktxt" th:text="' : '+${case.getTour().getId()}"></div>
+            <div class="index_uitext greytxt" th:text="#{insuranceCaseManager.tour}"></div>
+            <br>
+            <div class="ui divider"></div>
+            <div class="index_uitextleft greytxt" th:text="#{tourManager.start}"></div>
+            <div class="index_uitextleft blacktxt" th:text="' : '+${case.getTour().getGermanStart()}"></div>
+            <div class="index_uitext blacktxt" th:text="' : '+${case.getTour().getGermanEnd()}"></div>
+            <div class="index_uitext greytxt" th:text="#{tourManager.end}"></div>
+            <br>
+            <div class="ui divider"></div>
+            <div class="index_uitextleft greytxt" th:text="#{userManager.name}"></div>
+            <div class="index_uitextleft blacktxt" th:text="' : '+${case.getUserAccount().getFirstname()}+ ' '+${case.getUserAccount().getLastname()}"></div>
+            <div class="index_uitext blacktxt" th:text="' : '+${case.getUserAccount().getId()}"></div>
+            <div class="index_uitext greytxt" th:text="#{insuranceCaseManager.userAccount}"></div>
+            <br>
+            <div class="ui divider"></div>
+            <div class="index_uitextleft blacktxt" style="display: contents" th:text="${case.getText()}"></div>
+        </div>
+    </div>
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+
+<div class="ui container">
+    <header th:replace="template :: header"></header>
+<!--
+    <div class="ui menu">
+        <div class="dropdown-content" id="dropdowncontent">
+        <div class="item" style="float:left;">
+            <a type="button" href="userManager.html" th:href="@{/management/userManager}"
+               class="ui button">
+                <i class="users icon" style="float:left;"></i>
+                <div th:text="#{management.userManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="materialManager.html" th:href="@{/management/materialManager}"
+               class="ui button">
+                <i class="briefcase icon" style="float:left;"></i>
+                <div th:text="#{management.materialManager}" style="float:left;">usee</div>
+            </a>
+
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="tourManager.html" th:href="@{/management/tourManager}"
+               class="ui button">
+                <i class="tripadvisor icon" style="float:left;"></i>
+                <div th:text="#{management.tourManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="purchaseManager.html" th:href="@{/purchaseManager}"
+               class="ui button">
+                <i class="shopping basket icon" style="float:left;"></i>
+                <div th:text="#{management.purchaseManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="insuranceCaseManager.html" th:href="@{/management/insuranceCaseManager}"
+               class="ui button">
+                <i class="hospital icon" style="float:left;"></i>
+                <div th:text="#{management.insuranceCaseManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="bookingManager.html" th:href="@{/management/bookingManager}"
+               class="ui button">
+                <i class="book icon" style="float:left;"></i>
+                <div th:text="#{management.bookingManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="bikeManager.html" th:href="@{/management/bikeManager}"
+               class="ui button">
+                <i class="bicycle icon" style="float:left;"></i>
+                <div th:text="#{management.bikeManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+        <div class="item" style="float:left;">
+            <a type="button" href="resupplyManager.html" th:href="@{/management/resupplyManager}"
+               class="ui button">
+                <i class="warehouse icon" style="float:left;"></i>
+                <div th:text="#{management.resupplyManager}" style="float:left;">usee</div>
+            </a>
+        </div>
+    </div>
+    </div>
+</div>
+-->
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

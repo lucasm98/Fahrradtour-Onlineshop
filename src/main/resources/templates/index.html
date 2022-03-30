@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+    <title th:text="#{template.title}">Titel</title>
+</head>
+<body>
+<header>
+    <div class="ui container">
+        <header th:replace="template :: header"></header>
+    </div>
+</header>
+<div class="container" id="index_container" sec:authorize="!isAuthenticated()||hasRole('CUSTOMER')">
+
+    <h4 class="ui horizontal divider header">
+        <i class="tag icon"></i>
+        Top Touren
+    </h4>
+    <div class="ui three column grid">
+        <div class="column" th:each="tour : ${catalog}">
+            <div class="ui card">
+                <div class="ui red ribbon label" th:text="'Heute'" style="left: -16px;width: 90px;top: -5px;" th:if="${tour.getLeftDays()==0}">10 Days Left</div>
+                <div class="ui blue ribbon label" th:text="'noch '+${tour.getLeftDays()+' Tage'}" style="left: -16px;width: 110px;top: -5px;" th:if="${tour.getLeftDays()>10}">10 Days Left</div>
+                <div class="ui orange  ribbon label" th:text="'noch '+${tour.getLeftDays()+' Tage'}" th:if="${tour.in5()}" style="left: -16px;width: 110px;top: -5px;">10 Days Left</div>
+                <div class="ui green ribbon label" th:text="'noch '+${tour.getLeftDays()+' Tage'}" th:if="${tour.in10()}" style="left: -16px;width: 110px;top: -5px;"> 10 Days Left</div>
+                <div class="content" style="border-top:0;">
+                    <a class="header" th:href="@{/tour/{id}(id=${tour.id})}" th:text="${tour.name}">Tour Header</a>
+                </div>
+
+                <div class="content" style="padding:0;">
+                    <a th:href="@{/tour/{id}(id=${tour.id})}">
+                        <img class="ui fluid image tourimg"  th:src="@{/resources/img/{name}.jpg(name=${tour.tour.image})}"
+                             src="../static/resources/img/foTo.jpg">
+                    </a>
+                </div>
+                <div class="content">
+                    <div class="meta">
+                        <span th:text="#{tourManager.start}"></span>
+                        <span class="ui fade right" th:text="${tour.getGermanStart()}">Start</span><br>
+                        <span th:text="#{tourManager.end}"></span>
+                        <span class="ui fade right" th:text="${tour.getGermanEnd()}">End</span>
+                    </div>
+
+                </div>
+                <div class="content">
+
+                    <a class="extra" id="index_extra" th:href="@{/tour/{id}(id=${tour.id})}">
+                        <div class="ui tag labels" id="index_uitaglabels" th:switch="${tour.priceCategory}">
+                            <p th:case="LUXURY" class="ui red big label" th:text="${tour.priceCategory+' : '+tour.price}">
+                                LUXURY
+                            </p>
+                            <p th:case="'ECONOMY'" class="ui yellow medium label" th:text="${tour.priceCategory+' : '+tour.price}}">
+                                ECONOMY
+                            </p>
+                            <p th:case="*" class="ui medium label" id="index_uimediumlabel" th:text="${tour.priceCategory+' : '+tour.price}">
+                                Standard
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="content" >
+
+                    <a class="ui green image label" id="index_imagelabel" th:if="${tour.getFree()} >= 10" th:href="@{/tour/{id}(id=${tour.id})}">
+                        <i class="angle double up icon"></i>
+                        Free Seats :
+                        <div class="detail" th:text="${tour.getFree()}">Friend</div>
+                    </a>
+                    <a class="ui orange image label" id="index_imagelabel" th:if="${tour.getFree()} < 10 and ${tour.getFree()} > 0" th:href="@{/tour/{id}(id=${tour.id})}">
+                        <i  class="angle up icon"></i>
+                        Free Seats :
+                        <div class="detail" th:text="${tour.getFree()}">Friend</div>
+                    </a>
+                    <a class="ui red image label" id="index_imagelabel" th:if="${tour.getFree()} == 0" th:href="@{/tour/{id}(id=${tour.id})}">
+                        <i  class="close icon"></i>
+                        No Seats left
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h4 class="ui horizontal divider header">
+        <i class="tag icon"></i>
+        Bikes
+    </h4>
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui card" id="index_uicard">
+                <div class="content">
+                    <a class="header" th:href="@{/bike}" th:text="#{bike.name1}">Bike Header</a>
+                </div>
+                <div class="content">
+                    <a th:href="@{/bike}">
+                        <img class="ui fluid image" th:src="@{/resources/img/standard.jpg}"
+                             src="../static/resources/img/standard.jpg" >
+                    </a>
+                </div>
+                <div class="content">
+                    <div class="ui floated header" th:text="#{bike.name}"></div>
+                    <a th:href="@{/bike}">
+                        <div class="ui right floated button">
+                            <div class="ui text" th:text="#{bike.purchase}">Zur Buchung
+                                <i class="right chevron icon"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui card" id="index_uicard">
+                <div class="content">
+                    <a class="header" th:href="@{/ebike}" th:text="#{bike.name2}">Bike Header</a>
+                </div>
+                <div class="content">
+                    <a th:href="@{/ebike}">
+                        <img class="ui fluid image" th:src="@{/resources/img/ebike.jpg}"
+                             src="../static/resources/img/ebike.jpg" >
+                    </a>
+                </div>
+                <div class="content">
+                    <div class="ui floated header" th:text="#{ebike.name}"></div>
+                    <a th:href="@{/ebike}">
+                        <div class="ui right floated button">
+
+                            <div class="ui text" th:text="#{bike.purchase}">Zur Buchung
+                                <i class="right chevron icon"></i>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gbtd" id="index_gbtd" sec:authorize="hasRole('BOSS')">
+
+    <h2 th:text="Übersicht">sicht</h2>
+
+        <div class="ui two column grid">
+            <div class="column">
+                <div class="bglr">
+                    <a th:href="@{management/userManager}">
+                        <h3 class="ui header" th:text="Benutzer" >sicht</h3>
+                    </a>
+                    <div class="ui divider"></div>
+                    <div class="ui text" id="index_uitext" th:text="${usercoach}"></div>
+                    <div class="ui text" th:text="'Anzahl Tourcoach :'" ></div>
+                    <div class="ui text" id="index_uitext" th:text="${useruser}"></div>
+                    <div class="ui text" th:text="'Anzahl Benutzer :'"></div>
+                    <div class="ui text" id="index_uitext" th:text="${usergesamt}"></div>
+                    <div class="ui text" th:text="'Anzahl Gesamt :'"></div>
+                </div>
+            </div>
+            <div class=" column">
+                <div class="bglr">
+                    <a th:href="@{management/concreteTourManager}">
+                        <h3 class="ui header" th:text="Touren" >sicht</h3>
+                    </a>
+                    <div class="ui divider"></div>
+                    <div class="ui text" id="index_uitext" th:text="${tourgesamt}"></div>
+                    <div class="ui text" th:text="'Anzahl aktueller Touren :'"></div>
+                    <div class="ui text" id="index_uitext" th:text="${touractiv}"></div>
+                    <div class="ui text" th:text="'Anzahl aktiver Touren  :'"></div>
+                    <div class="ui text" id="index_uitext" th:text="${tourconcret}"></div>
+                    <div class="ui text" th:text="'Anzahl Tourvorlagen :'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ui two column grid">
+            <div class=" column">
+                <div class="bglr">
+                    <a th:href="@{management/insuranceCaseManager}">
+                        <h3 class="ui header" th:text="Versicherungsfälle" >sicht</h3>
+                    </a>
+                    <div class="ui divider"></div>
+                    <div class="ui text" id="index_uitext" th:text="${insurencecase}"></div>
+                    <div class="ui text" th:text="'Anzahl Gesamt :'"></div>
+                    <h4  th:text="#{index.vers}"></h4>
+                    <div class="gbtd" th:each="case : ${cases}">
+                        <div class="ui text" id="index_uitextleft" th:text="#{index.date}"></div>
+                        <div class="ui text" id="index_uitextleft" th:text="' : '+${case.getDate().toString()}"></div>
+                        <div class="ui text" id="index_uitext" th:text="' : '+${case.getUserAccount().getUsername()}"></div>
+                        <div class="ui text" id="index_uitext" th:text="#{index.user}"></div>
+                        </br>
+                        <div class="ui divider"></div>
+                        <div class="ui text" th:text="${case.getTour().getTour().getName()}"></div>
+                        <div class="ui divider"></div>
+                        <div class="ui text" th:text="${case.getText()}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="row">
+                    <div class=" bglr">
+                        <a th:href="@{management/bookingManager}">
+                            <h3 class="ui header" th:text="Buchungen" >sicht</h3>
+                        </a>
+                        <div class="ui divider"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bookinggesamt}"></div>
+                        <div class="ui text" th:text="'Anzahl Gesamt :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bookingbooked}"></div>
+                        <div class="ui text" th:text="'Anzahl Gebucht :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bookingpayed}"></div>
+                        <div class="ui text" th:text="'Anzahl Bezahlt :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bookingcanceled}"></div>
+                        <div class="ui text" th:text="'Anzahl Stoniert :'"></div>
+                    </div>
+                </div>
+                <div id="index_emptyspace">
+
+                </div>
+
+                <div class="row">
+                    <div class="bglr">
+                        <a th:href="@{management/bikeManager}">
+                            <h3 class="ui header"  th:text="#{index.bike}" >sicht</h3>
+                        </a>
+                        <div class="ui divider"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bikegesamt}"></div>
+                        <div class="ui text" th:text="'Anzahl Gesamt :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bikesold}"></div>
+                        <div class="ui text" th:text="'Anzahl Verkauft :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${bikefree}"></div>
+                        <div class="ui text" th:text="'Anzahl Frei :'"></div>
+                    </div>
+                </div>
+                <div id="index_emptyspace">
+
+                </div>
+                <div class="row">
+                    <div class="bglr">
+                        <a th:href="@{management/materialRequest}">
+                            <h3 class="ui header"  th:text="#{index.request}" >sicht</h3>
+                        </a>
+                        <div class="ui divider"></div>
+                        <div class="ui text" id="index_uitext" th:text="${requests.size()}"></div>
+                        <div class="ui text" th:text="'Anzahl Gesamt :'"></div>
+                        <div class="ui text" id="index_uitext" th:text="${activrequests.size()}"></div>
+                        <div class="ui text" th:text="'Anzahl Unbestellt :'"></div>
+                        <h4  th:text="#{index.requests}"></h4>
+                        <div class="gbtd" th:each="request : ${activrequests}">
+                            <div class="ui text" id="index_uitextleft" th:text="#{index.anzahl}"></div>
+                            <div class="ui text" id="index_uitextleft" th:text="' : '+${request.anzahl}" style="font: 15px/22px Tahoma, Geneva, sans-serif;"></div>
+                            <a class="ui text" style="color:black;font: 15px/22px Tahoma, Geneva, sans-serif;" id="index_uitext" th:text="' : '+${request.material.name}" th:href="@{'/management/material/'+${request.material.id}}">address</a>
+                            <div class="ui text" id="index_uitext" th:text="#{index.material}"></div>
+                            </br>
+                            <div class="ui divider"></div>
+                            <div class="ui text" id="index_uitextleft" th:text="#{index.station}"></div>
+                            <a class="ui text" style="color:black;font: 15px/22px Tahoma, Geneva, sans-serif;" id="index_uitext" th:text="${request.resupply.getName()}" th:href="@{'/management/resupplyManager/'+${request.resupply.getId()}}">address</a>
+                            </br>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+
+<footer th:replace="template :: footer"></footer>
+
+
+</body>
+</html>
